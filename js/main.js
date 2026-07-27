@@ -120,6 +120,14 @@ function hideMatch(match) {
   persist();
 }
 
+function restoreMatch(matchId) {
+  const overrides = { ...state.userData.matchOverrides };
+  delete overrides[matchId];
+  state.userData.matchOverrides = overrides;
+  render();
+  persist();
+}
+
 function deleteManualMatch(match) {
   state.userData.manualMatches = state.userData.manualMatches.filter((m) => m.id !== match.id);
   render();
@@ -167,7 +175,13 @@ function matchLine(m) {
   return `${dateLabel} ${m.competition} vs ${m.opponent || '未定'}${ha ? ' (' + ha + ')' : ''}`;
 }
 
-function showUpdateConfirm(diff, onConfirm) {
+// 自分で非表示にした試合のうち、元データ（取得結果）にはまだ存在するものを探す
+function findHiddenStillPresent(baseMatches) {
+  const overrides = state.userData.matchOverrides || {};
+  return baseMatches.filter((m) => overrides[m.id] && overrides[m.id].hidden);
+}
+
+function showUpdateConfirm(diff, hiddenStill, onConfirm) {
   detailOverlay.innerHTML = '';
   detailOverlay.classList.remove('hidden');
 
@@ -207,25 +221,53 @@ function showUpdateConfirm(diff, onConfirm) {
     (c) => `${matchLine(c.after)}　←　変更前: ${matchLine(c.before)}`
   );
   addSection('削除される試合', diff.removed, matchLine);
+
+  if (hiddenStill.length) {
+    const h3 = document.createElement('div');
+    h3.style.fontWeight = 'bold';
+    h3.style.margin = '8px 0 4px';
+    h3.textContent = '非表示にしている試合（元データにはまだ存在します）';
+    listWrap.appendChild(h3);
+    for (const m of hiddenStill) {
+      const row = document.createElement('div');
+      row.style.display = 'flex';
+      row.style.alignItems = 'center';
+      row.style.gap = '6px';
+      row.style.margin = '2px 0';
+      const label = document.createElement('span');
+      label.textContent = matchLine(m);
+      row.appendChild(label);
+      const restoreBtn = document.createElement('button');
+      restoreBtn.textContent = '復元する';
+      restoreBtn.addEventListener('click', () => {
+        restoreMatch(m.id);
+        row.remove();
+      });
+      row.appendChild(restoreBtn);
+      listWrap.appendChild(row);
+    }
+  }
   box.appendChild(listWrap);
 
   const actions = document.createElement('div');
   actions.className = 'modal-actions';
-  const okBtn = document.createElement('button');
-  okBtn.className = 'primary';
-  okBtn.textContent = '反映する';
-  okBtn.addEventListener('click', () => {
-    closeModal(detailOverlay);
-    onConfirm();
-  });
-  actions.appendChild(okBtn);
-  const cancelBtn = document.createElement('button');
-  cancelBtn.textContent = 'キャンセル';
-  cancelBtn.addEventListener('click', () => {
+  if (diff.added.length || diff.changed.length || diff.removed.length) {
+    const okBtn = document.createElement('button');
+    okBtn.className = 'primary';
+    okBtn.textContent = '反映する';
+    okBtn.addEventListener('click', () => {
+      closeModal(detailOverlay);
+      onConfirm();
+    });
+    actions.appendChild(okBtn);
+  }
+  const closeBtn = document.createElement('button');
+  closeBtn.textContent = diff.added.length || diff.changed.length || diff.removed.length ? 'キャンセル' : '閉じる';
+  closeBtn.addEventListener('click', () => {
     closeModal(detailOverlay);
     setSyncStatus(backendMode === 'firestore' ? 'Firestore同期中' : 'ローカル保存モード');
   });
-  actions.appendChild(cancelBtn);
+  actions.appendChild(closeBtn);
   box.appendChild(actions);
 
   detailOverlay.appendChild(box);
@@ -235,13 +277,14 @@ document.getElementById('reloadBtn').addEventListener('click', async () => {
   setSyncStatus('確認中…');
   const fetched = await loadBaseMatches(state.seasonYear);
   const diff = diffMatches(state.baseMatches, fetched);
+  const hiddenStill = findHiddenStillPresent(fetched);
 
-  if (!diff.added.length && !diff.changed.length && !diff.removed.length) {
+  if (!diff.added.length && !diff.changed.length && !diff.removed.length && !hiddenStill.length) {
     setSyncStatus('変更はありませんでした');
     return;
   }
 
-  showUpdateConfirm(diff, () => {
+  showUpdateConfirm(diff, hiddenStill, () => {
     state.baseMatches = fetched;
     saveCachedBaseMatches(state.seasonYear, fetched);
     render();
