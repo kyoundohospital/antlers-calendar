@@ -6,6 +6,7 @@ import { openMatchDetail, openAddMatchForm, closeModal } from './detail.js';
 import { openPlacesManager } from './places.js';
 
 const gridEl = document.getElementById('calendarGrid');
+const printTitleEl = document.getElementById('printTitle');
 const seasonLabelEl = document.getElementById('seasonLabel');
 const syncStatusEl = document.getElementById('syncStatus');
 const detailOverlay = document.getElementById('detailModal');
@@ -30,6 +31,7 @@ function setSyncStatus(text) {
 
 function render() {
   seasonLabelEl.textContent = seasonLabel(state.seasonYear);
+  printTitleEl.textContent = `鹿島アントラーズ観戦カレンダー　${seasonLabel(state.seasonYear)}`;
   const effective = mergeMatches({
     base: state.baseMatches,
     overrides: state.userData.matchOverrides,
