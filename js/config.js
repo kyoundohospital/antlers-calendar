@@ -4,16 +4,16 @@
 // README.md の手順で Firebase プロジェクトを作成し、ここに実際の値を入れてください。
 // 値を入れるまでは Firestore 連携は無効化され、観戦予定はブラウザのローカル保存のみで動作します。
 export const FIREBASE_CONFIG = {
-  apiKey: 'YOUR_API_KEY',
-  authDomain: 'YOUR_PROJECT_ID.firebaseapp.com',
-  projectId: 'YOUR_PROJECT_ID',
-  storageBucket: 'YOUR_PROJECT_ID.appspot.com',
-  messagingSenderId: 'YOUR_SENDER_ID',
-  appId: 'YOUR_APP_ID',
+  apiKey: 'AIzaSyBHYMSY6E9eDoUE61fStBZ0Xs_GGMFMhvY',
+  authDomain: 'antlers-cal-4c5op3.firebaseapp.com',
+  projectId: 'antlers-cal-4c5op3',
+  storageBucket: 'antlers-cal-4c5op3.firebasestorage.app',
+  messagingSenderId: '1014571549694',
+  appId: '1:1014571549694:web:dee0db4cd70ea7670c36af',
 };
 
 // spaceId: 推測困難な固定文字列（20文字程度）。README の手順で生成して置き換えてください。
-export const SPACE_ID = 'REPLACE_WITH_RANDOM_SPACE_ID';
+export const SPACE_ID = '2q5y511n271yw5y6o321';
 
 export const FIREBASE_CONFIGURED =
   FIREBASE_CONFIG.apiKey !== 'YOUR_API_KEY' && SPACE_ID !== 'REPLACE_WITH_RANDOM_SPACE_ID';
