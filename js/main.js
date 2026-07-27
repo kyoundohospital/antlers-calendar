@@ -176,47 +176,6 @@ document.getElementById('placesBtn').addEventListener('click', () => {
 
 document.getElementById('printBtn').addEventListener('click', () => window.print());
 
-document.getElementById('exportBtn').addEventListener('click', () => {
-  const payload = {
-    exportedAt: new Date().toISOString(),
-    seasonYear: state.seasonYear,
-    data: state.userData,
-  };
-  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `antlers-calendar-backup-${state.seasonYear}-${Date.now()}.json`;
-  a.click();
-  URL.revokeObjectURL(url);
-});
-
-document.getElementById('importBtn').addEventListener('click', () => {
-  document.getElementById('importFile').click();
-});
-
-document.getElementById('importFile').addEventListener('change', async (ev) => {
-  const file = ev.target.files[0];
-  if (!file) return;
-  try {
-    const text = await file.text();
-    const parsed = JSON.parse(text);
-    if (!parsed.data) throw new Error('不正なバックアップファイルです');
-    if (!confirm(`${parsed.seasonYear}年度のバックアップを現在表示中の${state.seasonYear}年度に読み込みます。よろしいですか？`)) {
-      return;
-    }
-    state.userData = { ...state.userData, ...parsed.data, seasonYear: state.seasonYear };
-    render();
-    await persist();
-    alert('読み込みが完了しました');
-  } catch (e) {
-    console.error(e);
-    alert('読み込みに失敗しました: ' + e.message);
-  } finally {
-    ev.target.value = '';
-  }
-});
-
 [detailOverlay, placesOverlay].forEach((overlay) => {
   overlay.addEventListener('click', (ev) => {
     if (ev.target === overlay) closeModal(overlay);
