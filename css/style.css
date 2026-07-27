@@ -275,7 +275,7 @@ main {
 
 /* ---- 印刷 ---- */
 @media print {
-  @page { size: A3 landscape; margin: 8mm; }
+  @page { size: A3 landscape; margin: 0; }
   * {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
@@ -288,8 +288,10 @@ main {
     left: 0; top: 0;
     overflow: hidden;
     border: none;
-    width: 100%;
-    height: 281mm;
+    box-sizing: border-box;
+    width: 420mm;
+    height: 297mm;
+    padding: 8mm;
     display: flex;
     flex-direction: column;
   }
