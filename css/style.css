@@ -298,41 +298,43 @@ main {
     flex: 0 0 auto;
     text-align: center;
     font-weight: bold;
-    font-size: 12pt;
+    font-size: 11pt;
     color: var(--header-bg);
-    padding: 0 0 1.5mm;
+    padding: 0 0 1mm;
   }
   .calendar-grid {
     flex: 1 1 auto;
     min-height: 0;
     grid-template-columns: repeat(6, 1fr) 14mm repeat(6, 1fr);
-    grid-template-rows: 7mm repeat(31, 1fr);
+    grid-template-rows: 6mm repeat(31, 1fr);
     min-width: 0;
     width: 100%;
   }
   .day-cell:hover { outline: none; }
   .day-cell {
-    padding: 1px 3px;
+    padding: 0.5px 2px;
     gap: 0;
   }
-  .day-cell__date-row { gap: 2px; }
-  .day-cell__date-group { gap: 2px; }
+  .day-cell__date-row { gap: 1px; }
+  .day-cell__date-group { gap: 1px; }
   .day-cell__date,
   .day-cell__time,
   .day-cell__ha {
-    font-size: 6.5px;
-    line-height: 1.1;
+    font-size: 6px;
+    line-height: 1.05;
+    letter-spacing: -0.2px;
   }
   .day-cell__meta { gap: 1px; }
   .badge {
-    width: 7px;
-    height: 7px;
-    font-size: 4.5px;
+    width: 6px;
+    height: 6px;
+    font-size: 4px;
     border-width: 0.5px;
   }
   .match-chip {
-    font-size: 6px;
-    line-height: 1.15;
+    font-size: 5.5px;
+    line-height: 1.05;
+    letter-spacing: -0.15px;
   }
-  .match-chip .chip-line3 { display: none; }
+  .match-chip .chip-line3 { font-size: 5px; }
 }
