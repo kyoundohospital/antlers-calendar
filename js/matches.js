@@ -12,6 +12,55 @@ export async function loadBaseMatches(seasonYear) {
   }
 }
 
+// ---- 試合データのローカルキャッシュ ----
+// 「取得」ボタンを押すまでは画面に反映しないため、直近に確定した試合データを
+// ブラウザ内に保持しておく（起動のたびに無条件でJSONを反映しないようにする）
+const BASE_MATCHES_CACHE_PREFIX = 'antlers-calendar:baseMatches:';
+
+export function loadCachedBaseMatches(seasonYear) {
+  try {
+    const raw = localStorage.getItem(BASE_MATCHES_CACHE_PREFIX + seasonYear);
+    return raw ? JSON.parse(raw) : null;
+  } catch {
+    return null;
+  }
+}
+
+export function saveCachedBaseMatches(seasonYear, matches) {
+  try {
+    localStorage.setItem(BASE_MATCHES_CACHE_PREFIX + seasonYear, JSON.stringify(matches));
+  } catch {
+    // localStorageが使えない環境では何もしない
+  }
+}
+
+// ---- 差分検出 ----
+// メタ情報（取得元・最終取得日時）は無視し、実質的な内容の変化だけを検出する
+const DIFF_FIELDS = ['date', 'altDate', 'kickoffTime', 'competition', 'round', 'homeAway', 'opponent', 'venue', 'status', 'note'];
+
+function fingerprint(m) {
+  return DIFF_FIELDS.map((f) => m[f] ?? '').join('|');
+}
+
+export function diffMatches(oldList, newList) {
+  const oldMap = new Map((oldList || []).map((m) => [m.id, m]));
+  const newMap = new Map((newList || []).map((m) => [m.id, m]));
+  const added = [];
+  const changed = [];
+  const removed = [];
+  for (const [id, m] of newMap) {
+    if (!oldMap.has(id)) {
+      added.push(m);
+    } else if (fingerprint(oldMap.get(id)) !== fingerprint(m)) {
+      changed.push({ before: oldMap.get(id), after: m });
+    }
+  }
+  for (const [id, m] of oldMap) {
+    if (!newMap.has(id)) removed.push(m);
+  }
+  return { added, changed, removed };
+}
+
 // base（静的JSON） + matchOverrides（手動編集/非表示） + manualMatches（手動追加）を合成する
 export function mergeMatches({ base, overrides, manual }) {
   const out = [];

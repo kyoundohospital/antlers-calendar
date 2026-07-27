@@ -1,5 +1,12 @@
 import { seasonYearOf, monthsOfSeason } from './config.js';
-import { loadBaseMatches, mergeMatches, groupByDate } from './matches.js';
+import {
+  loadBaseMatches,
+  mergeMatches,
+  groupByDate,
+  loadCachedBaseMatches,
+  saveCachedBaseMatches,
+  diffMatches,
+} from './matches.js';
 import { loadSeasonUserData, saveSeasonUserData, subscribeSeasonUserData, backendMode } from './store.js';
 import { renderCalendar } from './calendar.js';
 import { openMatchDetail, openAddMatchForm, closeModal } from './detail.js';
@@ -132,10 +139,13 @@ async function loadSeason(seasonYear) {
   }
   setSyncStatus('読み込み中…');
   state.seasonYear = seasonYear;
+  // 試合データは「取得」ボタンを押したときだけ更新する。初回はキャッシュが無いので取得する
+  const cachedBaseMatches = loadCachedBaseMatches(seasonYear);
   const [baseMatches, userData] = await Promise.all([
-    loadBaseMatches(seasonYear),
+    cachedBaseMatches ? Promise.resolve(cachedBaseMatches) : loadBaseMatches(seasonYear),
     loadSeasonUserData(seasonYear),
   ]);
+  if (!cachedBaseMatches) saveCachedBaseMatches(seasonYear, baseMatches);
   state.baseMatches = baseMatches;
   state.userData = userData;
   render();
@@ -151,11 +161,92 @@ async function loadSeason(seasonYear) {
 document.getElementById('prevSeasonBtn').addEventListener('click', () => loadSeason(state.seasonYear - 1));
 document.getElementById('nextSeasonBtn').addEventListener('click', () => loadSeason(state.seasonYear + 1));
 
+function matchLine(m) {
+  const ha = m.homeAway === 'home' ? 'H' : m.homeAway === 'away' ? 'A' : m.homeAway === 'neutral' ? '中立' : '';
+  const dateLabel = m.altDate ? `${m.date}(または${m.altDate})` : m.date;
+  return `${dateLabel} ${m.competition} vs ${m.opponent || '未定'}${ha ? ' (' + ha + ')' : ''}`;
+}
+
+function showUpdateConfirm(diff, onConfirm) {
+  detailOverlay.innerHTML = '';
+  detailOverlay.classList.remove('hidden');
+
+  const box = document.createElement('div');
+  box.className = 'modal-box';
+  const h2 = document.createElement('h2');
+  h2.textContent = '試合データの更新を確認';
+  box.appendChild(h2);
+
+  const summary = document.createElement('p');
+  summary.textContent = `新規 ${diff.added.length}件 / 変更 ${diff.changed.length}件 / 削除 ${diff.removed.length}件`;
+  box.appendChild(summary);
+
+  const listWrap = document.createElement('div');
+  listWrap.style.maxHeight = '300px';
+  listWrap.style.overflowY = 'auto';
+  listWrap.style.fontSize = '13px';
+  listWrap.style.marginBottom = '12px';
+
+  const addSection = (title, items, formatter) => {
+    if (!items.length) return;
+    const h3 = document.createElement('div');
+    h3.style.fontWeight = 'bold';
+    h3.style.margin = '8px 0 4px';
+    h3.textContent = title;
+    listWrap.appendChild(h3);
+    for (const item of items) {
+      const p = document.createElement('div');
+      p.textContent = formatter(item);
+      listWrap.appendChild(p);
+    }
+  };
+  addSection('追加される試合', diff.added, matchLine);
+  addSection(
+    '内容が変わる試合',
+    diff.changed,
+    (c) => `${matchLine(c.after)}　←　変更前: ${matchLine(c.before)}`
+  );
+  addSection('削除される試合', diff.removed, matchLine);
+  box.appendChild(listWrap);
+
+  const actions = document.createElement('div');
+  actions.className = 'modal-actions';
+  const okBtn = document.createElement('button');
+  okBtn.className = 'primary';
+  okBtn.textContent = '反映する';
+  okBtn.addEventListener('click', () => {
+    closeModal(detailOverlay);
+    onConfirm();
+  });
+  actions.appendChild(okBtn);
+  const cancelBtn = document.createElement('button');
+  cancelBtn.textContent = 'キャンセル';
+  cancelBtn.addEventListener('click', () => {
+    closeModal(detailOverlay);
+    setSyncStatus(backendMode === 'firestore' ? 'Firestore同期中' : 'ローカル保存モード');
+  });
+  actions.appendChild(cancelBtn);
+  box.appendChild(actions);
+
+  detailOverlay.appendChild(box);
+}
+
 document.getElementById('reloadBtn').addEventListener('click', async () => {
-  setSyncStatus('再読み込み中…');
-  state.baseMatches = await loadBaseMatches(state.seasonYear);
-  render();
-  setSyncStatus('最新データを取得しました');
+  setSyncStatus('確認中…');
+  const fetched = await loadBaseMatches(state.seasonYear);
+  const diff = diffMatches(state.baseMatches, fetched);
+
+  if (!diff.added.length && !diff.changed.length && !diff.removed.length) {
+    setSyncStatus('変更はありませんでした');
+    return;
+  }
+
+  showUpdateConfirm(diff, () => {
+    state.baseMatches = fetched;
+    saveCachedBaseMatches(state.seasonYear, fetched);
+    render();
+    setSyncStatus('最新データを反映しました');
+  });
 });
 
 document.getElementById('addMatchBtn').addEventListener('click', () => {
