@@ -98,13 +98,20 @@ export function renderCalendar(container, opts) {
       cell.dataset.date = dateStr;
 
       const dateRow = el('div', 'day-cell__date-row');
-      dateRow.appendChild(line(`${day} (${WEEKDAY_JA[dow]})`, 'day-cell__date'));
+      const dateGroup = el('div', 'day-cell__date-group');
+      dateGroup.appendChild(line(`${day} (${WEEKDAY_JA[dow]})`, 'day-cell__date'));
+      if (matches.length && matches[0].kickoffTime) {
+        dateGroup.appendChild(line(matches[0].kickoffTime, 'day-cell__time'));
+      }
+      dateRow.appendChild(dateGroup);
       if (matches.length) {
         const m = matches[0];
         const meta = el('div', 'day-cell__meta');
-        if (m.kickoffTime) meta.appendChild(line(m.kickoffTime, 'day-cell__time'));
         const ha = HOME_AWAY_LABEL[m.homeAway] || '';
-        if (ha) meta.appendChild(line(ha, 'day-cell__ha'));
+        if (ha) {
+          const haClass = 'day-cell__ha' + (m.homeAway === 'away' ? ' day-cell__ha--away' : '');
+          meta.appendChild(line(ha, haClass));
+        }
         const plan = viewingPlans ? viewingPlans[m.id] : null;
         if (plan && plan.viewingPlaceId) {
           const place = viewingPlaces.find((p) => p.id === plan.viewingPlaceId);
