@@ -62,7 +62,6 @@ function showDetailForMatches(matches) {
     onSavePlan: savePlan,
     onSaveMatchEdit: saveMatchEdit,
     onHideMatch: hideMatch,
-    onDeleteManualMatch: deleteManualMatch,
   });
 }
 

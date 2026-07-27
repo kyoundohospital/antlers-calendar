@@ -99,26 +99,6 @@ export function openMatchDetail(overlay, match, ctx) {
   editBtn.addEventListener('click', () => openMatchEditForm(overlay, match, ctx));
   actions.appendChild(editBtn);
 
-  const hideBtn = el('button', 'danger', '非表示にする');
-  hideBtn.addEventListener('click', () => {
-    if (confirm('この試合をカレンダーから非表示にしますか？')) {
-      ctx.onHideMatch(match);
-      closeModal(overlay);
-    }
-  });
-  actions.appendChild(hideBtn);
-
-  if (match.source === 'manual') {
-    const delBtn = el('button', 'danger', '削除');
-    delBtn.addEventListener('click', () => {
-      if (confirm('この手動追加試合を削除しますか？')) {
-        ctx.onDeleteManualMatch(match);
-        closeModal(overlay);
-      }
-    });
-    actions.appendChild(delBtn);
-  }
-
   const closeBtn2 = el('button', null, '閉じる');
   closeBtn2.addEventListener('click', () => closeModal(overlay));
   actions.appendChild(closeBtn2);
@@ -214,6 +194,16 @@ function openMatchEditForm(overlay, match, ctx) {
     closeModal(overlay);
   });
   actions.appendChild(saveBtn);
+
+  const delBtn = el('button', 'danger', '削除');
+  delBtn.addEventListener('click', () => {
+    if (confirm('この試合を削除しますか？')) {
+      ctx.onHideMatch(match);
+      closeModal(overlay);
+    }
+  });
+  actions.appendChild(delBtn);
+
   const cancelBtn = el('button', null, 'キャンセル');
   cancelBtn.addEventListener('click', () => openMatchDetail(overlay, match, ctx));
   actions.appendChild(cancelBtn);
