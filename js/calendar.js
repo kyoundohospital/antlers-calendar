@@ -30,8 +30,10 @@ function dowClass(dow, holidayName) {
 }
 
 function renderMatchChip(match) {
-  const chip = el('div', 'match-chip status-' + match.status);
-  chip.appendChild(line(match.competition, 'chip-line1'));
+  const chipClass = 'match-chip status-' + match.status + (match.altDate ? ' date-tentative' : '');
+  const chip = el('div', chipClass);
+  const line1Text = match.altDate ? `${match.competition}（日程未定）` : match.competition;
+  chip.appendChild(line(line1Text, 'chip-line1'));
   chip.appendChild(line(`vs ${match.opponent || '未定'}`, 'chip-line2'));
   if (match.venue) chip.appendChild(line(match.venue, 'chip-line3'));
   return chip;
@@ -91,8 +93,14 @@ export function renderCalendar(container, opts) {
       const dow = new Date(year, month - 1, day).getDay();
       const holidayName = getHolidayName(dateStr);
       const matches = matchesByDate.get(dateStr) || [];
+      const allTentative = matches.length > 0 && matches.every((m) => m.altDate);
 
-      cell.className = ['day-cell', dowClass(dow, holidayName), matches.length ? 'day-cell--match' : '']
+      cell.className = [
+        'day-cell',
+        dowClass(dow, holidayName),
+        matches.length ? 'day-cell--match' : '',
+        allTentative ? 'day-cell--match-tentative' : '',
+      ]
         .filter(Boolean)
         .join(' ');
       cell.dataset.date = dateStr;

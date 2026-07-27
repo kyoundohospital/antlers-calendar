@@ -28,9 +28,15 @@ export function mergeMatches({ base, overrides, manual }) {
 
 export function groupByDate(matches) {
   const map = new Map();
+  const add = (date, m) => {
+    if (!date) return;
+    if (!map.has(date)) map.set(date, []);
+    map.get(date).push(m);
+  };
   for (const m of matches) {
-    if (!map.has(m.date)) map.set(m.date, []);
-    map.get(m.date).push(m);
+    // 日程未確定（土/日どちらか未定など）の試合は altDate 側のマスにも表示する
+    add(m.date, m);
+    if (m.altDate) add(m.altDate, m);
   }
   for (const list of map.values()) {
     list.sort((a, b) => (a.kickoffTime || '').localeCompare(b.kickoffTime || ''));

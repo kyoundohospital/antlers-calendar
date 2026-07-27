@@ -46,7 +46,7 @@ export function openMatchDetail(overlay, match, ctx) {
   box.appendChild(el('h2', null, '試合詳細'));
 
   const info = el('dl', 'info-grid');
-  infoRow(info, '試合日', match.date);
+  infoRow(info, '試合日', match.altDate ? `${match.date} または ${match.altDate}（未確定）` : match.date);
   infoRow(info, '大会', match.competition);
   infoRow(info, '節/ラウンド', match.round);
   infoRow(info, 'ホーム/アウェイ', HOME_AWAY_OPTIONS.find((o) => o[0] === match.homeAway)?.[1] || match.homeAway);
@@ -113,6 +113,11 @@ function buildMatchForm(box, initial) {
   dateInput.value = initial.date || '';
   box.appendChild(field('試合日', dateInput));
 
+  const altDateInput = document.createElement('input');
+  altDateInput.type = 'date';
+  altDateInput.value = initial.altDate || '';
+  box.appendChild(field('候補日2（土/日どちらか未確定の場合のみ入力）', altDateInput));
+
   const timeInput = document.createElement('input');
   timeInput.type = 'time';
   timeInput.value = initial.kickoffTime || '';
@@ -164,6 +169,7 @@ function buildMatchForm(box, initial) {
     getValues() {
       return {
         date: dateInput.value,
+        altDate: altDateInput.value || null,
         kickoffTime: timeInput.value,
         competition: competitionInput.value,
         round: roundInput.value,
