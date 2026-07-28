@@ -54,6 +54,9 @@ export function openMatchDetail(overlay, match, ctx) {
   infoRow(info, 'キックオフ', match.kickoffTime);
   infoRow(info, '会場', match.venue);
   infoRow(info, 'ステータス', STATUS_LABEL[match.status] || match.status);
+  if (match.note) {
+    infoRow(info, match.status === 'finished' ? '結果' : 'メモ', match.note);
+  }
   if (match.sourceUrl) {
     const dt = el('dt', null, '取得元');
     const dd = el('dd');

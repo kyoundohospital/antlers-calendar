@@ -29,13 +29,26 @@ function dowClass(dow, holidayName) {
   return '';
 }
 
+// 試合メモの文言から勝敗を推定し、結果表示の色分けに使う（鹿島視点）
+function resultTone(note) {
+  if (/敗戦|敗退/.test(note)) return 'loss';
+  if (/引分/.test(note)) return 'draw';
+  if (/勝利/.test(note)) return 'win';
+  return 'neutral';
+}
+
 function renderMatchChip(match) {
   const chipClass = 'match-chip status-' + match.status + (match.altDate ? ' date-tentative' : '');
   const chip = el('div', chipClass);
   const line1Text = match.altDate ? `${match.competition}（日程未定）` : match.competition;
   chip.appendChild(line(line1Text, 'chip-line1'));
   chip.appendChild(line(`vs ${match.opponent || '未定'}`, 'chip-line2'));
-  if (match.venue) chip.appendChild(line(match.venue, 'chip-line3'));
+  // 行高を変えないため、終了した試合は3行目を会場ではなく結果にする
+  if (match.status === 'finished' && match.note) {
+    chip.appendChild(line(match.note, 'chip-line3 result-' + resultTone(match.note)));
+  } else if (match.venue) {
+    chip.appendChild(line(match.venue, 'chip-line3'));
+  }
   return chip;
 }
 

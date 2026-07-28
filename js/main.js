@@ -273,11 +273,20 @@ function showUpdateConfirm(diff, hiddenStill, onConfirm) {
   detailOverlay.appendChild(box);
 }
 
+// 試合日（またはaltDate）が今日以降かどうか。終了済みの過去の試合は「取得」の対象外にする
+function isFutureMatch(m) {
+  return m.date >= todayStr || (m.altDate && m.altDate >= todayStr);
+}
+
 document.getElementById('reloadBtn').addEventListener('click', async () => {
   setSyncStatus('確認中…');
   const fetched = await loadBaseMatches(state.seasonYear);
-  const diff = diffMatches(state.baseMatches, fetched);
-  const hiddenStill = findHiddenStillPresent(fetched);
+  const futureFetched = fetched.filter(isFutureMatch);
+  const pastCached = state.baseMatches.filter((m) => !isFutureMatch(m));
+  const futureCached = state.baseMatches.filter(isFutureMatch);
+
+  const diff = diffMatches(futureCached, futureFetched);
+  const hiddenStill = findHiddenStillPresent(futureFetched);
 
   if (!diff.added.length && !diff.changed.length && !diff.removed.length && !hiddenStill.length) {
     setSyncStatus('変更はありませんでした');
@@ -285,8 +294,9 @@ document.getElementById('reloadBtn').addEventListener('click', async () => {
   }
 
   showUpdateConfirm(diff, hiddenStill, () => {
-    state.baseMatches = fetched;
-    saveCachedBaseMatches(state.seasonYear, fetched);
+    const merged = [...pastCached, ...futureFetched];
+    state.baseMatches = merged;
+    saveCachedBaseMatches(state.seasonYear, merged);
     render();
     setSyncStatus('最新データを反映しました');
   });

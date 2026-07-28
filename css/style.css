@@ -31,6 +31,16 @@ header.app-header {
 header.app-header h1 {
   font-size: 16px;
   margin: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.title-logo {
+  width: 26px;
+  height: 20px;
+  color: #ffffff;
+  flex-shrink: 0;
 }
 
 .toolbar {
@@ -190,6 +200,10 @@ main {
 .match-chip .chip-line1 { font-weight: bold; color: var(--match-accent); display: block; overflow: hidden; text-overflow: ellipsis; }
 .match-chip .chip-line2 { display: block; overflow: hidden; text-overflow: ellipsis; }
 .match-chip .chip-line3 { display: block; overflow: hidden; text-overflow: ellipsis; color: #666; font-size: 10px; }
+.match-chip .chip-line3.result-win { color: #2e7d32; font-weight: bold; }
+.match-chip .chip-line3.result-draw { color: #757575; font-weight: bold; }
+.match-chip .chip-line3.result-loss { color: #c62828; font-weight: bold; }
+.match-chip .chip-line3.result-neutral { color: #555; font-weight: bold; }
 .match-chip.status-postponed .chip-line1 { color: #ef6c00; }
 .match-chip.status-canceled { text-decoration: line-through; opacity: 0.6; }
 .match-chip.date-tentative { opacity: 0.7; }
