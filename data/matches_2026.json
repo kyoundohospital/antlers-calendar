@@ -1,6 +1,6 @@
 {
   "seasonYear": 2026,
-  "generatedAt": "2026-07-28T00:00:00+09:00",
+  "generatedAt": "2026-08-22T00:00:00+09:00",
   "note": "サンプルデータ（架空データ）は削除済み。全試合、要件定義書5章の取得元（鹿島公式サイト・Jリーグ公式サイト・Football Lab等）から実際に調査した内容です。土曜/日曜どちらか未確定の試合は altDate に候補2日目を入れ、両方のマスに表示しています。詳細はREADME参照。",
   "matches": [
     {
@@ -205,11 +205,11 @@
       "homeAway": "away",
       "opponent": "横浜F・マリノス",
       "venue": "ＭＵＦＧスタジアム",
-      "status": "scheduled",
-      "sourceUrl": "https://www.jleague.jp/club/kashima/day/",
+      "status": "finished",
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/080701/",
       "sourceName": "Jリーグ公式サイト",
-      "lastFetchedAt": "2026-07-27T12:00:00+09:00",
-      "note": "2026/27シーズン開幕戦"
+      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
+      "note": "結果: 鹿島 4-3 横浜FM（勝利、90+13分チャヴリッチの逆転弾で開幕戦を制す）"
     },
     {
       "id": "2026-08-15-j1-nagoya",
@@ -221,11 +221,11 @@
       "homeAway": "home",
       "opponent": "名古屋グランパス",
       "venue": "メルカリスタジアム",
-      "status": "scheduled",
-      "sourceUrl": "https://www.jleague.jp/club/kashima/day/",
+      "status": "finished",
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/081501/",
       "sourceName": "Jリーグ公式サイト",
-      "lastFetchedAt": "2026-07-27T12:00:00+09:00",
-      "note": ""
+      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
+      "note": "結果: 鹿島 2-1 名古屋（勝利、90+8分関川郁万の決勝弾）"
     },
     {
       "id": "2026-08-22-j1-fukuoka",
