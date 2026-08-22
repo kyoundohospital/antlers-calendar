@@ -308,6 +308,22 @@
       "note": ""
     },
     {
+      "id": "2026-09-15-acle-newcastle",
+      "seasonYear": 2026,
+      "date": "2026-09-15",
+      "kickoffTime": "19:00",
+      "competition": "AFCチャンピオンズリーグエリート",
+      "round": "リーグステージ 第1節",
+      "homeAway": "home",
+      "opponent": "ニューカッスル・ジェッツ",
+      "venue": "カシマサッカースタジアム",
+      "status": "scheduled",
+      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
+      "sourceName": "鹿島アントラーズ公式サイト",
+      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
+      "note": ""
+    },
+    {
       "id": "2026-10-10-j1-gamba",
       "seasonYear": 2026,
       "date": "2026-10-10",
@@ -323,6 +339,22 @@
       "sourceName": "鹿島アントラーズ公式サイト",
       "lastFetchedAt": "2026-07-28T00:00:00+09:00",
       "note": "土曜/日曜どちらか未確定"
+    },
+    {
+      "id": "2026-10-13-acle-hanoi",
+      "seasonYear": 2026,
+      "date": "2026-10-13",
+      "kickoffTime": "19:15",
+      "competition": "AFCチャンピオンズリーグエリート",
+      "round": "リーグステージ 第2節",
+      "homeAway": "away",
+      "opponent": "コンアン・ハノイ",
+      "venue": "ハンダイスタジアム",
+      "status": "scheduled",
+      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
+      "sourceName": "鹿島アントラーズ公式サイト",
+      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
+      "note": ""
     },
     {
       "id": "2026-10-17-j1-nagasaki",
@@ -375,6 +407,22 @@
       "note": "土曜/日曜どちらか未確定"
     },
     {
+      "id": "2026-10-28-acle-pohang",
+      "seasonYear": 2026,
+      "date": "2026-10-28",
+      "kickoffTime": "19:00",
+      "competition": "AFCチャンピオンズリーグエリート",
+      "round": "リーグステージ 第3節",
+      "homeAway": "home",
+      "opponent": "浦項スティーラーズ",
+      "venue": "カシマサッカースタジアム",
+      "status": "scheduled",
+      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
+      "sourceName": "鹿島アントラーズ公式サイト",
+      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
+      "note": ""
+    },
+    {
       "id": "2026-10-31-j1-cerezo",
       "seasonYear": 2026,
       "date": "2026-10-31",
@@ -390,6 +438,22 @@
       "sourceName": "鹿島アントラーズ公式サイト",
       "lastFetchedAt": "2026-07-28T00:00:00+09:00",
       "note": "土曜/日曜どちらか未確定"
+    },
+    {
+      "id": "2026-11-04-acle-buriram",
+      "seasonYear": 2026,
+      "date": "2026-11-04",
+      "kickoffTime": "19:15",
+      "competition": "AFCチャンピオンズリーグエリート",
+      "round": "リーグステージ 第4節",
+      "homeAway": "away",
+      "opponent": "ブリーラム・ユナイテッド",
+      "venue": "ブリーラムスタジアム",
+      "status": "scheduled",
+      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
+      "sourceName": "鹿島アントラーズ公式サイト",
+      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
+      "note": ""
     },
     {
       "id": "2026-11-07-j1-fctokyo",
@@ -474,6 +538,38 @@
       "note": "組み合わせ抽選待ち（ホーム/アウェイ未定）"
     },
     {
+      "id": "2026-11-25-acle-jeonbuk",
+      "seasonYear": 2026,
+      "date": "2026-11-25",
+      "kickoffTime": "19:00",
+      "competition": "AFCチャンピオンズリーグエリート",
+      "round": "リーグステージ 第5節",
+      "homeAway": "home",
+      "opponent": "全北現代モータース",
+      "venue": "カシマサッカースタジアム",
+      "status": "scheduled",
+      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
+      "sourceName": "鹿島アントラーズ公式サイト",
+      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
+      "note": ""
+    },
+    {
+      "id": "2026-12-02-acle-portfc",
+      "seasonYear": 2026,
+      "date": "2026-12-02",
+      "kickoffTime": "19:15",
+      "competition": "AFCチャンピオンズリーグエリート",
+      "round": "リーグステージ 第6節",
+      "homeAway": "away",
+      "opponent": "ポートFC",
+      "venue": "タマサートスタジアム",
+      "status": "scheduled",
+      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
+      "sourceName": "鹿島アントラーズ公式サイト",
+      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
+      "note": ""
+    },
+    {
       "id": "2026-12-05-j1-chiba",
       "seasonYear": 2026,
       "date": "2026-12-05",
@@ -538,6 +634,22 @@
       "note": ""
     },
     {
+      "id": "2027-02-09-acle-daejeon",
+      "seasonYear": 2026,
+      "date": "2027-02-09",
+      "kickoffTime": "19:00",
+      "competition": "AFCチャンピオンズリーグエリート",
+      "round": "リーグステージ 第7節",
+      "homeAway": "away",
+      "opponent": "大田ハナ・シチズン",
+      "venue": "大田ワールドカップスタジアム",
+      "status": "scheduled",
+      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
+      "sourceName": "鹿島アントラーズ公式サイト",
+      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
+      "note": ""
+    },
+    {
       "id": "2027-02-13-j1-mito2",
       "seasonYear": 2026,
       "date": "2027-02-13",
@@ -553,6 +665,22 @@
       "sourceName": "鹿島アントラーズ公式サイト",
       "lastFetchedAt": "2026-07-28T00:00:00+09:00",
       "note": "土曜/日曜どちらか未確定、キックオフ時刻は2026年12月頃発表予定"
+    },
+    {
+      "id": "2027-02-16-acle-ratchaburi",
+      "seasonYear": 2026,
+      "date": "2027-02-16",
+      "kickoffTime": "19:00",
+      "competition": "AFCチャンピオンズリーグエリート",
+      "round": "リーグステージ 第8節",
+      "homeAway": "home",
+      "opponent": "ラーチャブリーFC",
+      "venue": "カシマサッカースタジアム",
+      "status": "scheduled",
+      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
+      "sourceName": "鹿島アントラーズ公式サイト",
+      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
+      "note": ""
     },
     {
       "id": "2027-02-20-j1-urawa3",
