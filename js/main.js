@@ -29,7 +29,7 @@ const state = {
 };
 
 function seasonLabel(seasonYear) {
-  return `${seasonYear}年度（${seasonYear}/4〜${seasonYear + 1}/3）`;
+  return `${seasonYear}年度（${seasonYear}/7〜${seasonYear + 1}/6）`;
 }
 
 function setSyncStatus(text) {

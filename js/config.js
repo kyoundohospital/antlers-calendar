@@ -19,15 +19,15 @@ export const FIREBASE_CONFIGURED =
   FIREBASE_CONFIG.apiKey !== 'YOUR_API_KEY' && SPACE_ID !== 'REPLACE_WITH_RANDOM_SPACE_ID';
 
 // --- 年度定義 ---
-export const SEASON_START_MONTH = 4; // 4月開始固定
+export const SEASON_START_MONTH = 7; // 7月開始固定（Jリーグ秋春制の開幕〜閉幕に合わせる）
 
-// date: 'YYYY-MM-DD' -> その日が属する年度（4月始まり）
+// date: 'YYYY-MM-DD' -> その日が属する年度（7月始まり）
 export function seasonYearOf(dateStr) {
   const [y, m] = dateStr.split('-').map(Number);
   return m >= SEASON_START_MONTH ? y : y - 1;
 }
 
-// 年度の12か月を [{year, month}, ...] で返す（4月〜翌年3月）
+// 年度の12か月を [{year, month}, ...] で返す（7月〜翌年6月）
 export function monthsOfSeason(seasonYear) {
   const months = [];
   for (let i = 0; i < 12; i++) {
