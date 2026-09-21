@@ -270,6 +270,22 @@ function fetchResultStatus(cached, fetched) {
 
 // ---- ログイン ----
 
+const AUTH_ERROR_MESSAGES = {
+  'auth/configuration-not-found': 'Firebase で Google ログインが有効になっていません（管理者が設定してください）',
+  'auth/operation-not-allowed': 'Firebase で Google ログインが有効になっていません（管理者が設定してください）',
+  'auth/unauthorized-domain': 'このURLはログインが許可されていません（Firebase の承認済みドメインに追加が必要です）',
+  'auth/popup-blocked': 'ログイン画面のポップアップがブロックされました。ポップアップを許可してもう一度押してください',
+  'auth/popup-closed-by-user': 'ログインがキャンセルされました',
+  'auth/cancelled-popup-request': 'ログインがキャンセルされました',
+  'auth/network-request-failed': '通信に失敗しました。接続を確認してもう一度押してください',
+  'permission-denied': '権限がありません（Firestore のルールが最新か確認してください）',
+};
+
+function authErrorMessage(e) {
+  const text = AUTH_ERROR_MESSAGES[e.code];
+  return text ? `${text}（${e.code}）` : `エラー: ${e.code || e.message}`;
+}
+
 function showAuthScreen({ message, primary, secondary }) {
   authScreenEl.innerHTML = '';
   const box = document.createElement('div');
@@ -293,10 +309,14 @@ function showAuthScreen({ message, primary, secondary }) {
       } catch (e) {
         console.error(e);
         btn.disabled = false;
-        const err = document.createElement('p');
-        err.className = 'auth-error';
-        err.textContent = `エラー: ${e.code || e.message}`;
-        box.appendChild(err);
+        // 押すたびにエラーが積み重ならないよう、1つの表示欄を使い回す
+        let err = box.querySelector('.auth-error');
+        if (!err) {
+          err = document.createElement('p');
+          err.className = 'auth-error';
+          box.appendChild(err);
+        }
+        err.textContent = authErrorMessage(e);
       }
     });
     box.appendChild(btn);
