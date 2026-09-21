@@ -290,6 +290,111 @@ main {
 .place-row .reorder-btns { display: flex; flex-direction: column; }
 .place-row .reorder-btns button { font-size: 10px; padding: 0 4px; }
 
+/* ---- ツールバー補助 ---- */
+.toolbar-group { display: flex; align-items: center; gap: 6px; }
+.mobile-only { display: none; }
+.month-label { font-size: 14px; font-weight: bold; min-width: 90px; text-align: center; }
+.view-filter {
+  background: #37474f;
+  color: #fff;
+  border: 1px solid #546e7a;
+  border-radius: 4px;
+  padding: 5px 6px;
+  font-size: 13px;
+}
+.view-filter[hidden] { display: none; }
+
+/* ---- ログイン画面 ---- */
+.auth-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.auth-screen[hidden] { display: none; }
+.auth-box {
+  background: #fff;
+  border-top: 6px solid var(--header-bg);
+  border-radius: 6px;
+  padding: 24px;
+  width: min(420px, 100%);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.auth-box h2 { margin: 0 0 4px; font-size: 17px; color: var(--header-bg); }
+.auth-box p { margin: 0; font-size: 14px; line-height: 1.6; word-break: break-all; }
+.auth-box button {
+  padding: 10px 14px;
+  border-radius: 4px;
+  border: 1px solid #999;
+  background: #f0f0f0;
+  cursor: pointer;
+  font-size: 14px;
+}
+.auth-box button.primary { background: var(--match-accent); color: #fff; border-color: var(--match-accent); }
+.auth-box button:disabled { opacity: 0.6; cursor: default; }
+.auth-error { color: #c62828; font-size: 12px !important; }
+
+/* ---- 観戦予定・メンバー ---- */
+.plans-heading { font-size: 13px; margin: 14px 0 6px; color: #444; border-bottom: 1px solid #eee; padding-bottom: 3px; }
+.plans-list, .members-list { list-style: none; margin: 0 0 8px; padding: 0; font-size: 13px; }
+.plans-list li, .members-list li { display: flex; align-items: center; gap: 8px; padding: 4px 0; flex-wrap: wrap; }
+.plans-list__name { font-weight: bold; min-width: 5em; }
+.plans-list__note { color: #666; font-size: 12px; flex-basis: 100%; padding-left: 28px; }
+.members-list__email { flex: 1; min-width: 0; word-break: break-all; }
+.members-list__tag { color: #666; font-size: 12px; }
+.members-list button { padding: 3px 8px; font-size: 12px; cursor: pointer; }
+.members-note { font-size: 12px; color: #666; margin: 0 0 8px; }
+.members-add { display: flex; gap: 6px; }
+.members-add input { flex: 1; min-width: 0; padding: 6px 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 13px; }
+.members-add button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: 1px solid var(--match-accent);
+  background: var(--match-accent);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ---- スマホ（1か月表示） ---- */
+.calendar-grid.calendar-grid--single {
+  grid-template-columns: 1fr;
+  grid-template-rows: 34px;
+  grid-auto-rows: minmax(58px, auto);
+  min-width: 0;
+}
+
+@media (max-width: 767px) {
+  header.app-header { padding: 8px 10px; }
+  header.app-header h1 { font-size: 15px; margin-bottom: 6px; }
+  .toolbar { gap: 6px; }
+  .toolbar button { padding: 6px 9px; }
+  .season-label { min-width: 0; font-size: 13px; }
+  .mobile-only { display: flex; }
+  .desktop-only { display: none; }
+  .sync-status { margin-left: 0; flex-basis: 100%; }
+  main { padding: 6px; }
+  .calendar-grid--single .day-cell { padding: 4px 8px; }
+  .calendar-grid--single .day-cell__date { font-size: 13px; }
+  .calendar-grid--single .day-cell__time,
+  .calendar-grid--single .day-cell__ha { font-size: 12px; }
+  .calendar-grid--single .badge { width: 20px; height: 20px; font-size: 11px; }
+  .calendar-grid--single .match-chip { font-size: 13px; white-space: normal; }
+  .calendar-grid--single .match-chip .chip-line1,
+  .calendar-grid--single .match-chip .chip-line2,
+  .calendar-grid--single .match-chip .chip-line3 { white-space: normal; }
+  .calendar-grid--single .match-chip .chip-line3 { font-size: 12px; }
+  .calendar-grid--single .day-cell--empty { display: none; }
+  .modal-box { padding: 16px; width: 100%; max-height: 92vh; }
+  .modal-overlay { align-items: flex-end; }
+}
+
 /* ---- 印刷 ---- */
 @media print {
   @page { size: A3 landscape; margin: 0; }
@@ -299,6 +404,7 @@ main {
     color-adjust: exact;
   }
   body * { visibility: hidden; }
+  .auth-screen { display: none !important; }
   .calendar-scroll, .calendar-scroll * { visibility: visible; }
   .calendar-scroll {
     position: absolute;

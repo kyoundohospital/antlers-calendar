@@ -52,12 +52,13 @@ function renderMatchChip(match) {
   return chip;
 }
 
-function createBadge(place) {
+function createBadge({ color, text, title }) {
   const badge = document.createElement('span');
   badge.className = 'badge';
-  badge.style.background = place.color;
-  badge.style.color = contrastColor(place.color);
-  badge.textContent = place.shortLabel;
+  badge.style.background = color;
+  badge.style.color = contrastColor(color);
+  badge.textContent = text;
+  if (title) badge.title = title;
   return badge;
 }
 
@@ -71,26 +72,33 @@ function contrastColor(hex) {
 }
 
 export function renderCalendar(container, opts) {
-  const { seasonYear, matchesByDate, viewingPlaces, viewingPlans, onCellClick, onEmptyCellClick } = opts;
+  const { seasonYear, matchesByDate, badgesFor, monthIndices, onCellClick, onEmptyCellClick } = opts;
   container.innerHTML = '';
-  const months = monthsOfSeason(seasonYear);
+  // monthIndices を指定すると、その月だけを1列で表示する（スマホ用）
+  const single = Array.isArray(monthIndices);
+  container.classList.toggle('calendar-grid--single', single);
+  const allMonths = monthsOfSeason(seasonYear);
+  const months = single ? monthIndices.map((i) => allMonths[i]) : allMonths;
+  const columnOf = (i) => (single ? i + 1 : gridColumnForMonthIndex(i));
 
   months.forEach(({ year, month }, i) => {
     const header = el('div', 'month-header');
-    header.style.gridColumn = String(gridColumnForMonthIndex(i));
+    header.style.gridColumn = String(columnOf(i));
     header.style.gridRow = '1';
     header.textContent = `${year}年 ${month}月`;
     container.appendChild(header);
   });
 
-  const gutter = el('div', 'gutter');
-  gutter.style.gridColumn = '7';
-  gutter.style.gridRow = `1 / span 32`;
-  container.appendChild(gutter);
+  if (!single) {
+    const gutter = el('div', 'gutter');
+    gutter.style.gridColumn = '7';
+    gutter.style.gridRow = `1 / span 32`;
+    container.appendChild(gutter);
+  }
 
   for (let day = 1; day <= 31; day++) {
     months.forEach(({ year, month }, i) => {
-      const col = gridColumnForMonthIndex(i);
+      const col = columnOf(i);
       const daysInMonth = new Date(year, month, 0).getDate();
       const cell = el('div');
       cell.style.gridColumn = String(col);
@@ -133,11 +141,7 @@ export function renderCalendar(container, opts) {
           const haClass = 'day-cell__ha' + (m.homeAway === 'away' ? ' day-cell__ha--away' : '');
           meta.appendChild(line(ha, haClass));
         }
-        const plan = viewingPlans ? viewingPlans[m.id] : null;
-        if (plan && plan.viewingPlaceId) {
-          const place = viewingPlaces.find((p) => p.id === plan.viewingPlaceId);
-          if (place) meta.appendChild(createBadge(place));
-        }
+        for (const badge of badgesFor ? badgesFor(m) : []) meta.appendChild(createBadge(badge));
         dateRow.appendChild(meta);
       }
       cell.appendChild(dateRow);

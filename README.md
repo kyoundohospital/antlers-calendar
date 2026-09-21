@@ -10,6 +10,8 @@
 - 観戦場所管理（追加・編集・削除・並び替え・バッヂ色編集）
 - 印刷 / PDF出力（A3横、12月-1月間に綴じ代余白）
 - Firestoreによる端末間同期（バックエンド抽象化。設定前は localStorage で動作）
+- Googleログイン・許可リストによる複数人での共有（観戦予定は1人ずつ）
+- スマホ向けの1か月表示
 - 祝日判定（内蔵計算方式、振替休日・国民の休日対応）
 
 - 試合日程・結果の自動取得（GitHub Actions で3時間おきに Jリーグ公式サイトから取得）
@@ -61,40 +63,31 @@ python -m http.server 8000
      ```js
      Array.from(crypto.getRandomValues(new Uint8Array(15))).map(b => b.toString(36)).join('').slice(0, 20)
      ```
-6. Firestore の「ルール」タブで、下記の内容に置き換えて「公開」する（`<SPACE_ID>` は手順5の値に置き換え）
+6. 左メニュー「Authentication」→「始める」→「Sign-in method」で **Google** を有効にする
+7. 「Authentication」→「設定」→「承認済みドメイン」に GitHub Pages のドメイン（例: `kyoundohospital.github.io`）を追加する
+8. Firestore の「ルール」タブに、リポジトリの `firestore.rules` の内容を貼り付けて「公開」する
+   （`spaceOk()` の文字列は手順5の `SPACE_ID` に合わせる）
+9. Firebase コンソールの「使用量とお支払い」で使用量アラートを設定しておく（想定外の急増検知用）
+10. アプリを開いて Google でログインし、「管理者として登録」を押す（最初にログインした人だけが管理者になれます）
+11. 「メンバー」画面で、一緒に使う人の Google アカウントのメールアドレスを追加する
 
-   ```
-   rules_version = '2';
-   service cloud.firestore {
-     match /databases/{database}/documents {
-       match /users/{spaceId}/seasons/{seasonYear} {
-         allow read, write: if spaceId == '<SPACE_ID>'
-                             && seasonYear.matches('^[0-9]{4}$');
-       }
-       match /{document=**} {
-         allow read, write: if false;
-       }
-     }
-   }
-   ```
+## 複数人での利用
 
-7. Firebase コンソールの「使用量とお支払い」で使用量アラートを設定しておく（想定外の急増検知用）
-8. ページを再読み込みし、画面右上の同期ステータスが「Firestore同期中」になれば設定完了です
-9. 別のブラウザ/スマホから同じ `index.html`（同じ `SPACE_ID`）を開き、観戦場所を変更して両方の画面に反映されることを確認してください
-
-### 注意（要件定義書 6.6 準拠）
-
-このルールは認証なしで `SPACE_ID` というパスの非公開性のみに依存しています。
-アプリのソースコードは公開されるため `SPACE_ID` を完全に隠すことはできません。
-個人の観戦記録という情報の性質上この水準で妥当と判断していますが、より厳密にしたい場合は
-GitHub リポジトリを private にする、または将来的に匿名認証/Googleログインを追加してください。
+- 許可リスト（「メンバー」画面）に登録された Google アカウントだけがログインして使えます
+- 観戦予定（観戦場所・メモ）は1人ずつ登録します。カレンダーには各メンバーの頭文字のバッジが
+  観戦場所の色で並び、上部の選択で「全員の予定」と特定の人の予定を切り替えられます（印刷にも反映）
+- 観戦場所の種類・手動で追加した試合・試合情報の編集は全員で共有します
+- 自分の観戦予定は自分だけが変更でき、他の人が同時に編集しても互いの変更は消えません
+- 表示名とバッジの文字は「メンバー」画面で各自が変更できます
+- スマホ（画面幅 767px 以下）では1か月ずつ表示し、「‹ ›」で月を切り替えます
+- 複数人対応より前に登録されていた「全員共通の観戦予定」は、管理者の予定として引き継がれます
 
 ## GitHub Pages で公開する手順
 
 1. このフォルダの中身を GitHub リポジトリにコミット・プッシュする
 2. リポジトリの Settings → Pages → Source を「Deploy from a branch」、ブランチを `main` / `/(root)` に設定
 3. 数分後に表示される URL でアプリにアクセスできます
-4. 認証機能がないため、**このURLは第三者に共有しない運用**としてください（要件定義書 6.2）
+4. Googleログインと許可リストで利用者を制限しています
    - 検索エンジンに載らないよう `index.html` に `noindex` を指定しています
    - ただし GitHub リポジトリ自体は公開のため、GitHub 上の検索ではコードが見つかります
 
@@ -110,6 +103,7 @@ js/store.js             Firestore / localStorage 抽象化
 js/calendar.js          年度カレンダーのレンダリング
 js/detail.js            試合詳細・編集・手動追加モーダル
 js/places.js            観戦場所管理モーダル
+js/members.js           メンバー（表示名・許可リスト）管理モーダル
 js/main.js              画面の初期化・イベント配線
 data/matches_<年度>.json  年度ごとの試合データ（自動更新）
 scripts/update_matches.py  Jリーグ公式サイトからの試合データ取得スクリプト

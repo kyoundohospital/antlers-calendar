@@ -71,8 +71,31 @@ export function openMatchDetail(overlay, match, ctx) {
   infoRow(info, '最終取得', match.lastFetchedAt ? new Date(match.lastFetchedAt).toLocaleString('ja-JP') : '-');
   box.appendChild(info);
 
-  // --- 観戦場所・メモ編集 ---
-  const plan = ctx.viewingPlans[match.id] || {};
+  // --- 他のメンバーの観戦予定（閲覧のみ） ---
+  const others = ctx.members
+    .filter((m) => m.uid !== ctx.myUid)
+    .map((m) => ({ member: m, plan: ctx.plansByUser[m.uid]?.[match.id] }))
+    .filter(({ plan }) => plan && (plan.viewingPlaceId || plan.note));
+  if (others.length) {
+    box.appendChild(el('h3', 'plans-heading', 'みんなの観戦予定'));
+    const list = el('ul', 'plans-list');
+    for (const { member, plan } of others) {
+      const place = ctx.viewingPlaces.find((p) => p.id === plan.viewingPlaceId);
+      const li = el('li');
+      const swatch = el('span', 'place-swatch');
+      swatch.style.background = place ? place.color : 'transparent';
+      li.appendChild(swatch);
+      li.appendChild(el('span', 'plans-list__name', member.name));
+      li.appendChild(el('span', null, place ? place.name : '(未選択)'));
+      if (plan.note) li.appendChild(el('span', 'plans-list__note', plan.note));
+      list.appendChild(li);
+    }
+    box.appendChild(list);
+  }
+
+  // --- 自分の観戦場所・メモ編集 ---
+  if (ctx.members.length > 1) box.appendChild(el('h3', 'plans-heading', '自分の観戦予定'));
+  const plan = ctx.plansByUser[ctx.myUid]?.[match.id] || {};
   const placeSelect = document.createElement('select');
   const noneOpt = el('option', null, '(未選択)');
   noneOpt.value = '';

@@ -1,10 +1,65 @@
 rules_version = '2';
+// Googleログインした「許可リスト（users/{SPACE_ID}/meta/members の emails）」のメンバーだけが読み書きできる。
+// 許可リストがまだ無いときだけ、最初にログインした人が自分を管理者として登録できる。
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /users/{spaceId}/seasons/{seasonYear} {
-      allow read, write: if spaceId == '2q5y511n271yw5y6o321'
-                          && seasonYear.matches('^[0-9]{4}$');
+    function spaceOk(spaceId) {
+      return spaceId == '2q5y511n271yw5y6o321';
     }
+    function membersPath(spaceId) {
+      return /databases/$(database)/documents/users/$(spaceId)/meta/members;
+    }
+    function signedIn() {
+      return request.auth != null
+          && request.auth.token.email is string
+          && request.auth.token.email_verified == true;
+    }
+    function myEmail() {
+      return request.auth.token.email.lower();
+    }
+    function isMember(spaceId) {
+      return spaceOk(spaceId) && signedIn()
+          && exists(membersPath(spaceId))
+          && myEmail() in get(membersPath(spaceId)).data.emails;
+    }
+    function isAdmin(spaceId) {
+      return isMember(spaceId) && request.auth.uid in get(membersPath(spaceId)).data.admins;
+    }
+
+    // 許可リスト
+    match /users/{spaceId}/meta/members {
+      // 未作成かどうかの確認（resource == null）と、メンバー本人による閲覧
+      allow get: if spaceOk(spaceId) && signedIn()
+                 && (resource == null || myEmail() in resource.data.emails);
+      // 最初の管理者の登録（許可リストが無いときだけ）
+      allow create: if spaceOk(spaceId) && signedIn()
+                    && request.resource.data.keys().hasOnly(['emails', 'admins'])
+                    && request.resource.data.emails == [myEmail()]
+                    && request.resource.data.admins == [request.auth.uid];
+      // 管理者によるメンバーの追加・削除（自分自身と管理者の一覧は変えられない）
+      allow update: if isAdmin(spaceId)
+                    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['emails'])
+                    && myEmail() in request.resource.data.emails;
+    }
+
+    // 各メンバーの表示名（本人だけが変更できる）
+    match /users/{spaceId}/profiles/{uid} {
+      allow read: if isMember(spaceId);
+      allow write: if isMember(spaceId) && uid == request.auth.uid
+                   && request.resource.data.email == myEmail();
+    }
+
+    // 全員で共有する年度データ（観戦場所・手動追加した試合・試合情報の編集）
+    match /users/{spaceId}/seasons/{seasonYear} {
+      allow read, write: if isMember(spaceId) && seasonYear.matches('^[0-9]{4}$');
+
+      // 各メンバーの観戦予定（全員が見られるが、書き込めるのは本人の分だけ）
+      match /plans/{uid} {
+        allow read: if isMember(spaceId);
+        allow write: if isMember(spaceId) && uid == request.auth.uid;
+      }
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }
