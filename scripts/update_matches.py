@@ -27,6 +27,7 @@ CLUB_DAY_URL = 'https://www.jleague.jp/club/kashima/day/?year={year}&month={mont
 MATCH_URL = 'https://www.jleague.jp{href}'
 SOURCE_NAME = 'Jリーグ公式サイト'
 KASHIMA = '鹿島アントラーズ'
+PLACEHOLDER_MATCH_DAYS = 10  # 仮登録の試合を公式の試合と対応づけるときに許す日付のずれ
 
 # 取得元の大会キー -> アプリで使っている大会名
 COMPETITION_NAME = {
@@ -64,7 +65,7 @@ def normalize_round(text):
 def round_key(text):
     t = normalize_round(text)
     m = re.search(r'第(\d+)節', t)
-    return m.group(1) if m else t
+    return m.group(1) if m else t.replace(' ', '')
 
 
 def season_of(date_str):
@@ -152,7 +153,7 @@ def result_note(o):
     return f'結果: 鹿島 {s}-{t} {o["opponentShort"]}（{outcome}）'
 
 
-def cleaned_note(note, date_fixed, time_fixed, opponent_fixed):
+def cleaned_note(note, date_fixed, time_fixed):
     """確定した事項についての注記（「土曜/日曜どちらか未確定」など）を取り除く"""
     parts = [p for p in re.split(r'[、。]', note or '') if p]
     keep = []
@@ -160,8 +161,6 @@ def cleaned_note(note, date_fixed, time_fixed, opponent_fixed):
         if date_fixed and '土曜/日曜' in p:
             continue
         if time_fixed and 'キックオフ時刻' in p:
-            continue
-        if opponent_fixed and ('対戦相手' in p or '組み合わせ' in p):
             continue
         keep.append(p)
     return '、'.join(keep) if len(keep) != len(parts) else (note or '')
@@ -176,9 +175,18 @@ def find_existing(o, matches, used):
     for m in same_comp:
         if o['date'] in (m.get('date'), m.get('altDate')):
             return m
-    for m in same_comp:
-        if round_key(m.get('round')) == round_key(o['round']) and not m.get('jleagueId'):
+    unlinked = [m for m in same_comp if not m.get('jleagueId')]
+    for m in unlinked:
+        if round_key(m.get('round')) == round_key(o['round']):
             return m
+    # 抽選前に仮登録した「対戦相手未定」の試合（ルヴァンカップ・天皇杯など）は、
+    # 日程が前後していても同じ大会で日付が近ければ同じ試合とみなして置き換える
+    placeholders = [m for m in unlinked if m.get('opponent') in (None, '', '未定') and m.get('date')]
+    if placeholders:
+        target = dt.date.fromisoformat(o['date'])
+        nearest = min(placeholders, key=lambda m: abs((dt.date.fromisoformat(m['date']) - target).days))
+        if abs((dt.date.fromisoformat(nearest['date']) - target).days) <= PLACEHOLDER_MATCH_DAYS:
+            return nearest
     return None
 
 
@@ -216,8 +224,11 @@ def apply_official(m, o, now_iso):
         # 手で書いた詳しい結果メモ（得点者など）はスコアが一致する限り残す
         if not old.startswith(score_prefix):
             m['note'] = result_note(o)
+    elif opponent_fixed:
+        # 仮登録時の注記（抽選待ち・ホーム/アウェイ未定など）は対戦相手が決まった時点で不要になる
+        m['note'] = ''
     else:
-        m['note'] = cleaned_note(m.get('note'), date_fixed, time_fixed, opponent_fixed)
+        m['note'] = cleaned_note(m.get('note'), date_fixed, time_fixed)
 
     m['jleagueId'] = o['jleagueId']
     if o['sourceUrl']:

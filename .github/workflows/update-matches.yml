@@ -8,6 +8,7 @@ on:
 
 permissions:
   contents: write
+  actions: write # 定期実行の自動停止を防ぐ（「定期実行を維持」ステップ）
 
 concurrency:
   group: update-matches
@@ -17,6 +18,14 @@ jobs:
   update:
     runs-on: ubuntu-latest
     steps:
+      # GitHub はリポジトリに60日間動きがないと定期実行を自動停止する。オフシーズンなどで
+      # データの更新が無い期間も止まらないよう、実行のたびに有効化し直して停止までの期間をリセットする
+      - name: 定期実行を維持
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/update-matches.yml/enable"
+
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
