@@ -120,14 +120,6 @@ function hideMatch(match) {
   persist();
 }
 
-function restoreMatch(matchId) {
-  const overrides = { ...state.userData.matchOverrides };
-  delete overrides[matchId];
-  state.userData.matchOverrides = overrides;
-  render();
-  persist();
-}
-
 function deleteManualMatch(match) {
   state.userData.manualMatches = state.userData.manualMatches.filter((m) => m.id !== match.id);
   render();
@@ -181,74 +173,6 @@ function fetchResultStatus(cached, fetched) {
 
 document.getElementById('prevSeasonBtn').addEventListener('click', () => loadSeason(state.seasonYear - 1));
 document.getElementById('nextSeasonBtn').addEventListener('click', () => loadSeason(state.seasonYear + 1));
-
-function matchLine(m) {
-  const ha = m.homeAway === 'home' ? 'H' : m.homeAway === 'away' ? 'A' : m.homeAway === 'neutral' ? '中立' : '';
-  const dateLabel = m.altDate ? `${m.date}(または${m.altDate})` : m.date;
-  return `${dateLabel} ${m.competition} vs ${m.opponent || '未定'}${ha ? ' (' + ha + ')' : ''}`;
-}
-
-// 自分で非表示にした試合（元データにまだ存在するもの）
-function findHiddenMatches() {
-  const overrides = state.userData.matchOverrides || {};
-  return state.baseMatches.filter((m) => overrides[m.id] && overrides[m.id].hidden);
-}
-
-function showHiddenMatches() {
-  detailOverlay.innerHTML = '';
-  detailOverlay.classList.remove('hidden');
-
-  const box = document.createElement('div');
-  box.className = 'modal-box';
-  const h2 = document.createElement('h2');
-  h2.textContent = '非表示にしている試合';
-  box.appendChild(h2);
-
-  const listWrap = document.createElement('div');
-  listWrap.style.maxHeight = '300px';
-  listWrap.style.overflowY = 'auto';
-  listWrap.style.fontSize = '13px';
-  listWrap.style.marginBottom = '12px';
-
-  const hidden = findHiddenMatches();
-  if (!hidden.length) {
-    const p = document.createElement('p');
-    p.textContent = 'この年度に非表示にしている試合はありません。';
-    listWrap.appendChild(p);
-  }
-  for (const m of hidden) {
-    const row = document.createElement('div');
-    row.style.display = 'flex';
-    row.style.alignItems = 'center';
-    row.style.gap = '6px';
-    row.style.margin = '2px 0';
-    const label = document.createElement('span');
-    label.textContent = matchLine(m);
-    row.appendChild(label);
-    const restoreBtn = document.createElement('button');
-    restoreBtn.textContent = '復元する';
-    restoreBtn.addEventListener('click', () => {
-      restoreMatch(m.id);
-      row.remove();
-    });
-    row.appendChild(restoreBtn);
-    listWrap.appendChild(row);
-  }
-  box.appendChild(listWrap);
-
-  const actions = document.createElement('div');
-  actions.className = 'modal-actions';
-  const closeBtn = document.createElement('button');
-  closeBtn.textContent = '閉じる';
-  closeBtn.addEventListener('click', () => closeModal(detailOverlay));
-  actions.appendChild(closeBtn);
-  box.appendChild(actions);
-
-  detailOverlay.appendChild(box);
-}
-
-// 古い index.html がキャッシュされていてボタンが無い場合でも、画面全体が動かなくならないようにする
-document.getElementById('hiddenMatchesBtn')?.addEventListener('click', showHiddenMatches);
 
 document.getElementById('addMatchBtn').addEventListener('click', () => {
   openAddMatchForm(detailOverlay, todayStr, {
