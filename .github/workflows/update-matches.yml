@@ -1,0 +1,39 @@
+name: 試合データ自動更新
+
+on:
+  schedule:
+    # 3時間おき（UTC）。夜の試合の結果も翌0時（JST）の実行で反映される
+    - cron: '0 */3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-matches
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Jリーグ公式サイトから日程・結果を取得
+        run: python scripts/update_matches.py
+
+      - name: 変更があればコミットしてプッシュ
+        run: |
+          if git diff --quiet -- data; then
+            echo "変更なし"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          git commit -m "試合データを自動更新（Jリーグ公式サイト）"
+          git push

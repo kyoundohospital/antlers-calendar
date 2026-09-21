@@ -1,6 +1,6 @@
 {
   "seasonYear": 2026,
-  "generatedAt": "2026-08-22T00:00:00+09:00",
+  "generatedAt": "2026-09-21T14:35:39+09:00",
   "note": "2026/27シーズン（秋春制）の全日程です。季節区切りを7月〜翌6月に変更したことで、開幕（2026年8月）から最終節（2027年6月）までを1ファイルに集約しました。土曜/日曜どちらか未確定の試合は altDate に候補2日目を入れ、両方のマスに表示しています。",
   "matches": [
     {
@@ -12,12 +12,13 @@
       "round": "第1節",
       "homeAway": "away",
       "opponent": "横浜F・マリノス",
-      "venue": "ＭＵＦＧスタジアム",
+      "venue": "MUFGスタジアム",
       "status": "finished",
-      "sourceUrl": "https://www.jleague.jp/match/j1/2026/080701/",
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/080701",
       "sourceName": "Jリーグ公式サイト",
-      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
-      "note": "結果: 鹿島 4-3 横浜FM（勝利、90+13分チャヴリッチの逆転弾で開幕戦を制す）"
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "結果: 鹿島 4-3 横浜FM（勝利、90+13分チャヴリッチの逆転弾で開幕戦を制す）",
+      "jleagueId": "2026080701"
     },
     {
       "id": "2026-08-15-j1-nagoya",
@@ -30,10 +31,11 @@
       "opponent": "名古屋グランパス",
       "venue": "メルカリスタジアム",
       "status": "finished",
-      "sourceUrl": "https://www.jleague.jp/match/j1/2026/081501/",
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/081501",
       "sourceName": "Jリーグ公式サイト",
-      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
-      "note": "結果: 鹿島 2-1 名古屋（勝利、90+8分関川郁万の決勝弾）"
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "結果: 鹿島 2-1 名古屋（勝利、90+8分関川郁万の決勝弾）",
+      "jleagueId": "2026081501"
     },
     {
       "id": "2026-08-22-j1-fukuoka",
@@ -45,11 +47,12 @@
       "homeAway": "home",
       "opponent": "アビスパ福岡",
       "venue": "メルカリスタジアム",
-      "status": "scheduled",
-      "sourceUrl": "https://www.jleague.jp/club/kashima/day/",
+      "status": "finished",
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/082201",
       "sourceName": "Jリーグ公式サイト",
-      "lastFetchedAt": "2026-07-27T12:00:00+09:00",
-      "note": ""
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "結果: 鹿島 3-2 福岡（勝利）",
+      "jleagueId": "2026082201"
     },
     {
       "id": "2026-08-26-tenno-r2",
@@ -59,13 +62,14 @@
       "competition": "天皇杯",
       "round": "2回戦",
       "homeAway": "home",
-      "opponent": "未定",
+      "opponent": "アトレチコ鈴鹿クラブ",
       "venue": "メルカリスタジアム",
-      "status": "scheduled",
-      "sourceUrl": "https://www.jleague.jp/club/kashima/day/",
+      "status": "finished",
+      "sourceUrl": "https://www.jleague.jp/match/emperor/2026/082601",
       "sourceName": "Jリーグ公式サイト",
-      "lastFetchedAt": "2026-07-27T12:00:00+09:00",
-      "note": "対戦相手は1回戦の結果により決定"
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "結果: 鹿島 3-0 鈴鹿（勝利）",
+      "jleagueId": "2026082601"
     },
     {
       "id": "2026-08-29-j1-tokyov",
@@ -77,11 +81,12 @@
       "homeAway": "away",
       "opponent": "東京ヴェルディ",
       "venue": "味の素スタジアム",
-      "status": "scheduled",
-      "sourceUrl": "https://www.jleague.jp/club/kashima/day/",
+      "status": "finished",
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/082906",
       "sourceName": "Jリーグ公式サイト",
-      "lastFetchedAt": "2026-07-27T12:00:00+09:00",
-      "note": ""
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "結果: 鹿島 2-0 東京V（勝利）",
+      "jleagueId": "2026082906"
     },
     {
       "id": "2026-09-02-j1-mito",
@@ -92,12 +97,13 @@
       "round": "第5節",
       "homeAway": "away",
       "opponent": "水戸ホーリーホック",
-      "venue": "ケーズデンキスタジアム水戸",
-      "status": "scheduled",
-      "sourceUrl": "",
-      "sourceName": "ユーザー提供（Google検索結果）",
-      "lastFetchedAt": "2026-07-27T00:00:00+09:00",
-      "note": ""
+      "venue": "水戸信用金庫スタジアム",
+      "status": "finished",
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/090216",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "結果: 鹿島 2-4 水戸（敗戦）",
+      "jleagueId": "2026090216"
     },
     {
       "id": "2026-09-06-j1-urawa",
@@ -109,11 +115,29 @@
       "homeAway": "home",
       "opponent": "浦和レッズ",
       "venue": "メルカリスタジアム",
-      "status": "scheduled",
-      "sourceUrl": "",
-      "sourceName": "ユーザー提供（Google検索結果）",
-      "lastFetchedAt": "2026-07-27T00:00:00+09:00",
-      "note": ""
+      "status": "finished",
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/090603",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "結果: 鹿島 0-1 浦和（敗戦）",
+      "jleagueId": "2026090603"
+    },
+    {
+      "id": "2026-09-11-j1-2026091102",
+      "seasonYear": 2026,
+      "date": "2026-09-11",
+      "kickoffTime": "19:00",
+      "competition": "明治安田Ｊ１リーグ",
+      "round": "第7節",
+      "homeAway": "away",
+      "opponent": "ヴィッセル神戸",
+      "venue": "ノエビアスタジアム神戸",
+      "status": "finished",
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/091102",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "結果: 鹿島 1-2 神戸（敗戦）",
+      "jleagueId": "2026091102"
     },
     {
       "id": "2026-09-15-acle-newcastle",
@@ -125,61 +149,97 @@
       "homeAway": "home",
       "opponent": "ニューカッスル・ジェッツ",
       "venue": "カシマサッカースタジアム",
+      "status": "finished",
+      "sourceUrl": "https://www.jleague.jp/match/acle/2026/091503",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "結果: 鹿島 7-1 ニューカッスル・ジェッツ（勝利）",
+      "jleagueId": "2026091503"
+    },
+    {
+      "id": "2026-09-19-j1-2026091909",
+      "seasonYear": 2026,
+      "date": "2026-09-19",
+      "kickoffTime": "18:03",
+      "competition": "明治安田Ｊ１リーグ",
+      "round": "第8節",
+      "homeAway": "away",
+      "opponent": "川崎フロンターレ",
+      "venue": "Uvanceとどろきスタジアム by Fujitsu",
+      "status": "finished",
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/091909",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "結果: 鹿島 3-3 川崎F（引分）",
+      "jleagueId": "2026091909"
+    },
+    {
+      "id": "2026-09-23-emperor-2026092317",
+      "seasonYear": 2026,
+      "date": "2026-09-23",
+      "kickoffTime": "17:00",
+      "competition": "天皇杯",
+      "round": "3回戦",
+      "homeAway": "home",
+      "opponent": "ヴァンフォーレ甲府",
+      "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
-      "note": ""
+      "sourceUrl": "https://www.jleague.jp/match/emperor/2026/092317",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026092317"
     },
     {
       "id": "2026-10-10-j1-gamba",
       "seasonYear": 2026,
-      "date": "2026-10-10",
-      "altDate": "2026-10-11",
-      "kickoffTime": "",
+      "date": "2026-10-09",
+      "kickoffTime": "19:00",
       "competition": "明治安田Ｊ１リーグ",
       "round": "第9節",
       "homeAway": "home",
       "opponent": "ガンバ大阪",
       "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/100903",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026100903"
     },
     {
       "id": "2026-10-13-acle-hanoi",
       "seasonYear": 2026,
       "date": "2026-10-13",
-      "kickoffTime": "19:15",
+      "kickoffTime": "21:15",
       "competition": "AFCチャンピオンズリーグエリート",
       "round": "リーグステージ 第2節",
       "homeAway": "away",
       "opponent": "コンアン・ハノイ",
-      "venue": "ハンダイスタジアム",
+      "venue": "ハンダイ・スタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
-      "note": ""
+      "sourceUrl": "https://www.jleague.jp/match/acle/2026/101309",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026101309"
     },
     {
       "id": "2026-10-17-j1-nagasaki",
       "seasonYear": 2026,
       "date": "2026-10-17",
-      "altDate": "2026-10-18",
       "kickoffTime": "15:00",
       "competition": "明治安田Ｊ１リーグ",
       "round": "第10節",
       "homeAway": "home",
-      "opponent": "Ｖ・ファーレン長崎",
+      "opponent": "V・ファーレン長崎",
       "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/101711",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026101711"
     },
     {
       "id": "2026-10-21-j1-kyoto",
@@ -190,18 +250,18 @@
       "round": "第11節",
       "homeAway": "away",
       "opponent": "京都サンガF.C.",
-      "venue": "サンガスタジアム",
+      "venue": "サンガスタジアム by KYOCERA",
       "status": "scheduled",
-      "sourceUrl": "https://www.jleague.jp/club/kashima/day/",
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/102112",
       "sourceName": "Jリーグ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": ""
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026102112"
     },
     {
       "id": "2026-10-24-j1-kashiwa2",
       "seasonYear": 2026,
       "date": "2026-10-24",
-      "altDate": "2026-10-25",
       "kickoffTime": "15:00",
       "competition": "明治安田Ｊ１リーグ",
       "round": "第12節",
@@ -209,10 +269,11 @@
       "opponent": "柏レイソル",
       "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/102407",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026102407"
     },
     {
       "id": "2026-10-28-acle-pohang",
@@ -225,16 +286,16 @@
       "opponent": "浦項スティーラーズ",
       "venue": "カシマサッカースタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
-      "note": ""
+      "sourceUrl": "https://www.jleague.jp/match/acle/2026/102808",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026102808"
     },
     {
       "id": "2026-10-31-j1-cerezo",
       "seasonYear": 2026,
       "date": "2026-10-31",
-      "altDate": "2026-11-01",
       "kickoffTime": "15:00",
       "competition": "明治安田Ｊ１リーグ",
       "round": "第13節",
@@ -242,26 +303,28 @@
       "opponent": "セレッソ大阪",
       "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/103110",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026103110"
     },
     {
       "id": "2026-11-04-acle-buriram",
       "seasonYear": 2026,
       "date": "2026-11-04",
-      "kickoffTime": "19:15",
+      "kickoffTime": "21:15",
       "competition": "AFCチャンピオンズリーグエリート",
       "round": "リーグステージ 第4節",
       "homeAway": "away",
       "opponent": "ブリーラム・ユナイテッド",
-      "venue": "ブリーラムスタジアム",
+      "venue": "ブリーラム・スタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
-      "note": ""
+      "sourceUrl": "https://www.jleague.jp/match/acle/2026/110402",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026110402"
     },
     {
       "id": "2026-11-07-j1-fctokyo",
@@ -274,10 +337,11 @@
       "opponent": "FC東京",
       "venue": "味の素スタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": ""
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/110709",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026110709"
     },
     {
       "id": "2026-11-11-lc-qf1",
@@ -314,19 +378,19 @@
     {
       "id": "2026-11-21-j1-shimizu",
       "seasonYear": 2026,
-      "date": "2026-11-21",
-      "altDate": "2026-11-22",
-      "kickoffTime": "",
+      "date": "2026-11-20",
+      "kickoffTime": "19:00",
       "competition": "明治安田Ｊ１リーグ",
       "round": "第15節",
       "homeAway": "home",
       "opponent": "清水エスパルス",
       "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/112002",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026112002"
     },
     {
       "id": "2026-11-25-acle-jeonbuk",
@@ -339,16 +403,16 @@
       "opponent": "全北現代モータース",
       "venue": "カシマサッカースタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
-      "note": ""
+      "sourceUrl": "https://www.jleague.jp/match/acle/2026/112528",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026112528"
     },
     {
       "id": "2026-11-28-j1-okayama",
       "seasonYear": 2026,
       "date": "2026-11-28",
-      "altDate": "2026-11-29",
       "kickoffTime": "15:00",
       "competition": "明治安田Ｊ１リーグ",
       "round": "第17節",
@@ -356,26 +420,28 @@
       "opponent": "ファジアーノ岡山",
       "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/112804",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026112804"
     },
     {
       "id": "2026-12-02-acle-portfc",
       "seasonYear": 2026,
       "date": "2026-12-02",
-      "kickoffTime": "19:15",
+      "kickoffTime": "21:15",
       "competition": "AFCチャンピオンズリーグエリート",
       "round": "リーグステージ 第6節",
       "homeAway": "away",
       "opponent": "ポートFC",
-      "venue": "タマサートスタジアム",
+      "venue": "タマサート・スタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
-      "note": ""
+      "sourceUrl": "https://www.jleague.jp/match/acle/2026/120202",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026120202"
     },
     {
       "id": "2026-12-05-j1-chiba",
@@ -388,10 +454,11 @@
       "opponent": "ジェフユナイテッド千葉",
       "venue": "フクダ電子アリーナ",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": ""
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/120502",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026120502"
     },
     {
       "id": "2026-12-13-j1-hiroshima",
@@ -404,10 +471,11 @@
       "opponent": "サンフレッチェ広島",
       "venue": "エディオンピースウイング広島",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": ""
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/121305",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026121305"
     },
     {
       "id": "2026-12-16-j1-machida",
@@ -420,10 +488,11 @@
       "opponent": "FC町田ゼルビア",
       "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "節番号が前後の試合と時系列で入れ替わっているが公式サイト表示のまま（延期振替の可能性）"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/121601",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "節番号が前後の試合と時系列で入れ替わっているが公式サイト表示のまま（延期振替の可能性）",
+      "jleagueId": "2026121601"
     },
     {
       "id": "2026-12-19-j1-tokyov2",
@@ -434,12 +503,13 @@
       "round": "第20節",
       "homeAway": "home",
       "opponent": "東京ヴェルディ",
-      "venue": "ＭＵＦＧスタジアム",
+      "venue": "MUFGスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": ""
+      "sourceUrl": "https://www.jleague.jp/match/j1/2026/121901",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2026121901"
     },
     {
       "id": "2027-02-09-acle-daejeon",
@@ -450,12 +520,13 @@
       "round": "リーグステージ 第7節",
       "homeAway": "away",
       "opponent": "大田ハナ・シチズン",
-      "venue": "大田ワールドカップスタジアム",
+      "venue": "大田ワールドカップ・スタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
-      "note": ""
+      "sourceUrl": "https://www.jleague.jp/match/acle/2027/020905",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2027020905"
     },
     {
       "id": "2027-02-13-j1-mito2",
@@ -469,10 +540,11 @@
       "opponent": "水戸ホーリーホック",
       "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定、キックオフ時刻は2026年12月頃発表予定"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/021301",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "土曜/日曜どちらか未確定、キックオフ時刻は2026年12月頃発表予定",
+      "jleagueId": "2027021301"
     },
     {
       "id": "2027-02-16-acle-ratchaburi",
@@ -485,10 +557,11 @@
       "opponent": "ラーチャブリーFC",
       "venue": "カシマサッカースタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/blogs/news/260819sptxt4",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-08-22T00:00:00+09:00",
-      "note": ""
+      "sourceUrl": "https://www.jleague.jp/match/acle/2027/021601",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2027021601"
     },
     {
       "id": "2027-02-20-j1-urawa3",
@@ -502,10 +575,11 @@
       "opponent": "浦和レッズ",
       "venue": "埼玉スタジアム2002",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定、キックオフ時刻は2026年12月頃発表予定"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/022003",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "土曜/日曜どちらか未確定、キックオフ時刻は2026年12月頃発表予定",
+      "jleagueId": "2027022003"
     },
     {
       "id": "2027-02-27-j1-okayama2",
@@ -517,12 +591,13 @@
       "round": "第23節",
       "homeAway": "away",
       "opponent": "ファジアーノ岡山",
-      "venue": "ＪＦＥ晴れの国スタジアム",
+      "venue": "JFE晴れの国スタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定、キックオフ時刻は2026年12月頃発表予定"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/022709",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "土曜/日曜どちらか未確定、キックオフ時刻は2026年12月頃発表予定",
+      "jleagueId": "2027022709"
     },
     {
       "id": "2027-03-06-j1-chiba2",
@@ -536,10 +611,11 @@
       "opponent": "ジェフユナイテッド千葉",
       "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定、キックオフ時刻は2026年12月頃発表予定"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/030602",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "土曜/日曜どちらか未確定、キックオフ時刻は2026年12月頃発表予定",
+      "jleagueId": "2027030602"
     },
     {
       "id": "2027-03-10-j1-machida2",
@@ -550,12 +626,13 @@
       "round": "第25節",
       "homeAway": "away",
       "opponent": "FC町田ゼルビア",
-      "venue": "町田ＧＩＯＮスタジアム",
+      "venue": "町田GIONスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "キックオフ時刻は2026年12月頃発表予定"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/031005",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "キックオフ時刻は2026年12月頃発表予定",
+      "jleagueId": "2027031005"
     },
     {
       "id": "2027-03-13-j1-hiroshima2",
@@ -569,10 +646,28 @@
       "opponent": "サンフレッチェ広島",
       "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定、キックオフ時刻は2026年12月頃発表予定"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/031301",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "土曜/日曜どちらか未確定、キックオフ時刻は2026年12月頃発表予定",
+      "jleagueId": "2027031301"
+    },
+    {
+      "id": "2027-03-21-j1-2027032101",
+      "seasonYear": 2026,
+      "date": "2027-03-21",
+      "kickoffTime": "",
+      "competition": "明治安田Ｊ１リーグ",
+      "round": "第27節",
+      "homeAway": "away",
+      "opponent": "清水エスパルス",
+      "venue": "MUFGスタジアム",
+      "status": "scheduled",
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/032101",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "",
+      "jleagueId": "2027032101"
     },
     {
       "id": "2027-04-03-j1-yokohamafm",
@@ -583,13 +678,14 @@
       "competition": "明治安田Ｊ１リーグ",
       "round": "第28節",
       "homeAway": "home",
-      "opponent": "横浜Ｆ・マリノス",
+      "opponent": "横浜F・マリノス",
       "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/040301",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表",
+      "jleagueId": "2027040301"
     },
     {
       "id": "2027-04-10-j1-nagoya",
@@ -601,12 +697,13 @@
       "round": "第29節",
       "homeAway": "away",
       "opponent": "名古屋グランパス",
-      "venue": "豊田スタジアム",
+      "venue": "未定",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表。会場は公式サイトで未表記のため通常の本拠地を記載（要確認）"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/041009",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表。会場は公式サイトで未表記のため通常の本拠地を記載（要確認）",
+      "jleagueId": "2027041009"
     },
     {
       "id": "2027-04-17-j1-cerezo",
@@ -618,12 +715,13 @@
       "round": "第30節",
       "homeAway": "away",
       "opponent": "セレッソ大阪",
-      "venue": "ヨドコウ桜スタジアム",
+      "venue": "YANMAR HANASAKA STADIUM",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表。取得元の会場表記が不自然だったため通常の本拠地名に修正（要確認）"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/041706",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表。取得元の会場表記が不自然だったため通常の本拠地名に修正（要確認）",
+      "jleagueId": "2027041706"
     },
     {
       "id": "2027-04-24-j1-kyoto",
@@ -637,10 +735,11 @@
       "opponent": "京都サンガF.C.",
       "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/042401",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表",
+      "jleagueId": "2027042401"
     },
     {
       "id": "2027-04-29-j1-kobe",
@@ -653,10 +752,11 @@
       "opponent": "ヴィッセル神戸",
       "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "キックオフ時刻未発表"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/042901",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "キックオフ時刻未発表",
+      "jleagueId": "2027042901"
     },
     {
       "id": "2027-05-03-j1-gamba",
@@ -668,12 +768,13 @@
       "round": "第33節",
       "homeAway": "away",
       "opponent": "ガンバ大阪",
-      "venue": "パナソニックスタジアム吹田",
+      "venue": "パナソニック スタジアム 吹田",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表。ACLエリート2026/27の勝ち上がり次第で日程が変動する可能性あり"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/050306",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表。ACLエリート2026/27の勝ち上がり次第で日程が変動する可能性あり",
+      "jleagueId": "2027050306"
     },
     {
       "id": "2027-05-09-j1-kawasaki",
@@ -686,10 +787,11 @@
       "opponent": "川崎フロンターレ",
       "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "キックオフ時刻未発表。ACLエリート2026/27の勝ち上がり次第で日程が変動する可能性あり"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/050901",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "キックオフ時刻未発表。ACLエリート2026/27の勝ち上がり次第で日程が変動する可能性あり",
+      "jleagueId": "2027050901"
     },
     {
       "id": "2027-05-15-j1-nagasaki",
@@ -700,13 +802,14 @@
       "competition": "明治安田Ｊ１リーグ",
       "round": "第35節",
       "homeAway": "away",
-      "opponent": "Ｖ・ファーレン長崎",
+      "opponent": "V・ファーレン長崎",
       "venue": "PEACE STADIUM Connected by SoftBank",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/051510",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表",
+      "jleagueId": "2027051510"
     },
     {
       "id": "2027-05-22-j1-fukuoka",
@@ -720,10 +823,11 @@
       "opponent": "アビスパ福岡",
       "venue": "ベスト電器スタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/052210",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表",
+      "jleagueId": "2027052210"
     },
     {
       "id": "2027-05-29-j1-kashiwa",
@@ -737,10 +841,11 @@
       "opponent": "柏レイソル",
       "venue": "三協フロンテア柏スタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/052901",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "土曜/日曜どちらか未確定、キックオフ時刻未発表",
+      "jleagueId": "2027052901"
     },
     {
       "id": "2027-06-06-j1-fctokyo",
@@ -748,15 +853,16 @@
       "date": "2027-06-06",
       "kickoffTime": "",
       "competition": "明治安田Ｊ１リーグ",
-      "round": "第38節（最終節）",
+      "round": "第38節",
       "homeAway": "home",
       "opponent": "FC東京",
       "venue": "メルカリスタジアム",
       "status": "scheduled",
-      "sourceUrl": "https://www.antlers.co.jp/pages/games",
-      "sourceName": "鹿島アントラーズ公式サイト",
-      "lastFetchedAt": "2026-07-28T00:00:00+09:00",
-      "note": "キックオフ時刻未発表"
+      "sourceUrl": "https://www.jleague.jp/match/j1/2027/060601",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "note": "キックオフ時刻未発表",
+      "jleagueId": "2027060601"
     }
   ]
 }
