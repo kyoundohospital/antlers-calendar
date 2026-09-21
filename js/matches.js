@@ -1,20 +1,22 @@
 // 試合データの読み込みとマージ
 
+// 取得に失敗した場合は null を返す（ファイルが存在しない年度は空配列）
 export async function loadBaseMatches(seasonYear) {
   try {
     const res = await fetch(`data/matches_${seasonYear}.json`, { cache: 'no-store' });
-    if (!res.ok) return [];
+    if (res.status === 404) return [];
+    if (!res.ok) return null;
     const data = await res.json();
     return data.matches || [];
   } catch (e) {
     console.warn('試合データの読み込みに失敗しました', e);
-    return [];
+    return null;
   }
 }
 
 // ---- 試合データのローカルキャッシュ ----
-// 「取得」ボタンを押すまでは画面に反映しないため、直近に確定した試合データを
-// ブラウザ内に保持しておく（起動のたびに無条件でJSONを反映しないようにする）
+// 直近に反映した試合データをブラウザ内に保持しておく。起動時の取得との差分表示と、
+// 取得に失敗したとき（オフラインなど）の表示に使う
 const BASE_MATCHES_CACHE_PREFIX = 'antlers-calendar:baseMatches:';
 
 export function loadCachedBaseMatches(seasonYear) {

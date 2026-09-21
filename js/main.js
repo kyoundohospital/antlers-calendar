@@ -147,23 +147,36 @@ async function loadSeason(seasonYear) {
   }
   setSyncStatus('読み込み中…');
   state.seasonYear = seasonYear;
-  // 試合データは「取得」ボタンを押したときだけ更新する。初回はキャッシュが無いので取得する
+  // 開くたびに最新の試合情報・結果を取得して反映する。取得できなければ前回のキャッシュで表示する
   const cachedBaseMatches = loadCachedBaseMatches(seasonYear);
-  const [baseMatches, userData] = await Promise.all([
-    cachedBaseMatches ? Promise.resolve(cachedBaseMatches) : loadBaseMatches(seasonYear),
+  const [fetched, userData] = await Promise.all([
+    loadBaseMatches(seasonYear),
     loadSeasonUserData(seasonYear),
   ]);
-  if (!cachedBaseMatches) saveCachedBaseMatches(seasonYear, baseMatches);
-  state.baseMatches = baseMatches;
+  if (state.seasonYear !== seasonYear) return; // 読み込み中に別の年度へ切り替えられた
+  state.baseMatches = fetched ?? cachedBaseMatches ?? [];
+  if (fetched) saveCachedBaseMatches(seasonYear, fetched);
   state.userData = userData;
   render();
-  setSyncStatus(backendMode === 'firestore' ? 'Firestore同期中' : 'ローカル保存モード');
+  setSyncStatus(fetchResultStatus(cachedBaseMatches, fetched));
 
+  // 購読開始直後の初回通知は現在の内容そのものなので、取得結果のステータスを上書きしない
+  let isFirstSnapshot = true;
   state.unsubscribe = await subscribeSeasonUserData(seasonYear, (data) => {
     state.userData = data;
     render();
-    setSyncStatus('他端末からの更新を反映しました');
+    if (!isFirstSnapshot) setSyncStatus('他端末からの更新を反映しました');
+    isFirstSnapshot = false;
   });
+}
+
+function fetchResultStatus(cached, fetched) {
+  const modeLabel = backendMode === 'firestore' ? 'Firestore同期中' : 'ローカル保存モード';
+  if (!fetched) return `試合データを取得できませんでした（前回のデータを表示中）／${modeLabel}`;
+  if (!cached) return modeLabel;
+  const diff = diffMatches(cached, fetched);
+  const n = diff.added.length + diff.changed.length + diff.removed.length;
+  return n ? `最新の試合データを反映しました（${n}件更新）／${modeLabel}` : modeLabel;
 }
 
 document.getElementById('prevSeasonBtn').addEventListener('click', () => loadSeason(state.seasonYear - 1));
@@ -276,6 +289,10 @@ function showUpdateConfirm(diff, hiddenStill, onConfirm) {
 document.getElementById('reloadBtn').addEventListener('click', async () => {
   setSyncStatus('確認中…');
   const fetched = await loadBaseMatches(state.seasonYear);
+  if (!fetched) {
+    setSyncStatus('試合データを取得できませんでした');
+    return;
+  }
   const diff = diffMatches(state.baseMatches, fetched);
   const hiddenStill = findHiddenStillPresent(fetched);
 
