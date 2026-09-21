@@ -21,23 +21,12 @@
     </svg>
   </h1>
   <div class="toolbar">
-    <div class="toolbar-group">
-      <button id="prevSeasonBtn" aria-label="前の年度">◀</button>
-      <span id="seasonLabel" class="season-label"></span>
-      <button id="nextSeasonBtn" aria-label="次の年度">▶</button>
-    </div>
-    <div class="toolbar-group mobile-only">
-      <button id="prevMonthBtn" aria-label="前の月">‹</button>
-      <span id="monthLabel" class="month-label"></span>
-      <button id="nextMonthBtn" aria-label="次の月">›</button>
-    </div>
-    <select id="viewFilter" class="view-filter" aria-label="表示する予定" hidden></select>
-    <div class="toolbar-group">
-      <button id="addMatchBtn">手動追加</button>
-      <button id="placesBtn">マスタ</button>
-      <button id="membersBtn">メンバー</button>
-      <button id="printBtn" class="desktop-only">印刷</button>
-    </div>
+    <button id="prevSeasonBtn">◀</button>
+    <span id="seasonLabel" class="season-label"></span>
+    <button id="nextSeasonBtn">▶</button>
+    <button id="addMatchBtn">手動追加</button>
+    <button id="placesBtn">マスタ</button>
+    <button id="printBtn">印刷</button>
     <span id="syncStatus" class="sync-status"></span>
   </div>
 </header>
@@ -49,7 +38,6 @@
   </div>
 </main>
 
-<div id="authScreen" class="auth-screen" hidden></div>
 <div id="detailModal" class="modal-overlay hidden"></div>
 <div id="placesModal" class="modal-overlay hidden"></div>
 
