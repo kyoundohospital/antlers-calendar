@@ -1,6 +1,6 @@
 {
   "seasonYear": 2026,
-  "generatedAt": "2026-10-09T19:11:59+09:00",
+  "generatedAt": "2026-10-10T03:06:20+09:00",
   "note": "2026/27シーズン（秋春制）の全日程です。季節区切りを7月〜翌6月に変更したことで、開幕（2026年8月）から最終節（2027年6月）までを1ファイルに集約しました。土曜/日曜どちらか未確定の試合は altDate に候補2日目を入れ、両方のマスに表示しています。",
   "matches": [
     {
@@ -200,11 +200,11 @@
       "homeAway": "home",
       "opponent": "ガンバ大阪",
       "venue": "メルカリスタジアム",
-      "status": "scheduled",
+      "status": "finished",
       "sourceUrl": "https://www.jleague.jp/match/j1/2026/100903",
       "sourceName": "Jリーグ公式サイト",
-      "lastFetchedAt": "2026-10-09T19:11:59+09:00",
-      "note": "",
+      "lastFetchedAt": "2026-10-10T03:06:20+09:00",
+      "note": "結果: 鹿島 2-0 G大阪（勝利）",
       "jleagueId": "2026100903"
     },
     {
