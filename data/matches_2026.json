@@ -1,6 +1,6 @@
 {
   "seasonYear": 2026,
-  "generatedAt": "2026-09-23T19:59:57+09:00",
+  "generatedAt": "2026-10-09T19:11:59+09:00",
   "note": "2026/27シーズン（秋春制）の全日程です。季節区切りを7月〜翌6月に変更したことで、開幕（2026年8月）から最終節（2027年6月）までを1ファイルに集約しました。土曜/日曜どちらか未確定の試合は altDate に候補2日目を入れ、両方のマスに表示しています。",
   "matches": [
     {
@@ -194,7 +194,7 @@
       "id": "2026-10-10-j1-gamba",
       "seasonYear": 2026,
       "date": "2026-10-09",
-      "kickoffTime": "19:00",
+      "kickoffTime": "19:04",
       "competition": "明治安田Ｊ１リーグ",
       "round": "第9節",
       "homeAway": "home",
@@ -203,7 +203,7 @@
       "status": "scheduled",
       "sourceUrl": "https://www.jleague.jp/match/j1/2026/100903",
       "sourceName": "Jリーグ公式サイト",
-      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "lastFetchedAt": "2026-10-09T19:11:59+09:00",
       "note": "",
       "jleagueId": "2026100903"
     },
