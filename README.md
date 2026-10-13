@@ -9,6 +9,7 @@
 - 試合詳細表示・手動追加/編集/非表示
 - 観戦場所管理（追加・編集・削除・並び替え・バッヂ色編集）
 - 印刷 / PDF出力（A3横、12月-1月間に綴じ代余白）
+- Excel出力（印刷と同じレイアウトの .xlsx を「Excel」ボタンで書き出し）
 - Firestoreによる端末間同期（バックエンド抽象化。設定前は localStorage で動作）
 - 祝日判定（内蔵計算方式、振替休日・国民の休日対応）
 
@@ -110,6 +111,7 @@ js/store.js             Firestore / localStorage 抽象化
 js/calendar.js          年度カレンダーのレンダリング
 js/detail.js            試合詳細・編集・手動追加モーダル
 js/places.js            観戦場所管理モーダル
+js/export-xlsx.js       Excel（.xlsx）書き出し
 js/main.js              画面の初期化・イベント配線
 data/matches_<年度>.json  年度ごとの試合データ（自動更新）
 scripts/update_matches.py  Jリーグ公式サイトからの試合データ取得スクリプト

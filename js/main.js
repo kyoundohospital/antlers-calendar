@@ -11,6 +11,7 @@ import { loadSeasonUserData, saveSeasonUserData, subscribeSeasonUserData, backen
 import { renderCalendar } from './calendar.js';
 import { openMatchDetail, openAddMatchForm, closeModal } from './detail.js';
 import { openPlacesManager } from './places.js';
+import { downloadCalendarXlsx } from './export-xlsx.js';
 
 const gridEl = document.getElementById('calendarGrid');
 const printTitleEl = document.getElementById('printTitle');
@@ -190,6 +191,26 @@ document.getElementById('placesBtn').addEventListener('click', () => {
 });
 
 document.getElementById('printBtn').addEventListener('click', () => window.print());
+
+document.getElementById('excelBtn').addEventListener('click', () => {
+  const effective = mergeMatches({
+    base: state.baseMatches,
+    overrides: state.userData.matchOverrides,
+    manual: state.userData.manualMatches,
+  });
+  try {
+    downloadCalendarXlsx({
+      seasonYear: state.seasonYear,
+      matchesByDate: groupByDate(effective),
+      viewingPlaces: state.userData.viewingPlaces,
+      viewingPlans: state.userData.viewingPlans,
+    });
+    setSyncStatus('Excelを書き出しました');
+  } catch (e) {
+    console.error(e);
+    setSyncStatus('Excelの書き出しに失敗しました');
+  }
+});
 
 [detailOverlay, placesOverlay].forEach((overlay) => {
   overlay.addEventListener('click', (ev) => {
