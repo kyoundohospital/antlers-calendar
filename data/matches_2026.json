@@ -1,6 +1,6 @@
 {
   "seasonYear": 2026,
-  "generatedAt": "2026-10-17T19:18:34+09:00",
+  "generatedAt": "2026-10-20T23:09:54+09:00",
   "note": "2026/27シーズン（秋春制）の全日程です。季節区切りを7月〜翌6月に変更したことで、開幕（2026年8月）から最終節（2027年6月）までを1ファイルに集約しました。土曜/日曜どちらか未確定の試合は altDate に候補2日目を入れ、両方のマスに表示しています。",
   "matches": [
     {
@@ -464,16 +464,16 @@
       "id": "2026-12-09-emperor-2026120902",
       "seasonYear": 2026,
       "date": "2026-12-09",
-      "kickoffTime": "",
+      "kickoffTime": "19:00",
       "competition": "天皇杯",
       "round": "ラウンド16",
       "homeAway": "home",
       "opponent": "セレッソ大阪",
-      "venue": "未定",
+      "venue": "メルカリスタジアム",
       "status": "scheduled",
       "sourceUrl": "https://www.jleague.jp/match/emperor/2026/120902",
       "sourceName": "Jリーグ公式サイト",
-      "lastFetchedAt": "2026-10-15T20:01:14+09:00",
+      "lastFetchedAt": "2026-10-20T23:09:54+09:00",
       "note": "",
       "jleagueId": "2026120902"
     },
