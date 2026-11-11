@@ -1,6 +1,6 @@
 {
   "seasonYear": 2026,
-  "generatedAt": "2026-11-07T18:42:48+09:00",
+  "generatedAt": "2026-11-11T14:12:35+09:00",
   "note": "2026/27シーズン（秋春制）の全日程です。季節区切りを7月〜翌6月に変更したことで、開幕（2026年8月）から最終節（2027年6月）までを1ファイルに集約しました。土曜/日曜どちらか未確定の試合は altDate に候補2日目を入れ、両方のマスに表示しています。",
   "matches": [
     {
@@ -437,11 +437,11 @@
       "round": "リーグステージ 第6節",
       "homeAway": "away",
       "opponent": "ポートFC",
-      "venue": "タマサート・スタジアム",
+      "venue": "パトゥム・ターニー・スタジアム",
       "status": "scheduled",
       "sourceUrl": "https://www.jleague.jp/match/acle/2026/120202",
       "sourceName": "Jリーグ公式サイト",
-      "lastFetchedAt": "2026-09-21T14:35:39+09:00",
+      "lastFetchedAt": "2026-11-11T14:12:35+09:00",
       "note": "",
       "jleagueId": "2026120202"
     },
