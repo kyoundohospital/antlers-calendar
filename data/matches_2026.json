@@ -1,6 +1,6 @@
 {
   "seasonYear": 2026,
-  "generatedAt": "2026-11-15T19:29:50+09:00",
+  "generatedAt": "2026-11-16T03:36:23+09:00",
   "note": "2026/27シーズン（秋春制）の全日程です。季節区切りを7月〜翌6月に変更したことで、開幕（2026年8月）から最終節（2027年6月）までを1ファイルに集約しました。土曜/日曜どちらか未確定の試合は altDate に候補2日目を入れ、両方のマスに表示しています。",
   "matches": [
     {
@@ -687,6 +687,40 @@
       "lastFetchedAt": "2026-09-21T14:35:39+09:00",
       "note": "",
       "jleagueId": "2027032101"
+    },
+    {
+      "id": "2027-03-24-levain-2027032402",
+      "seasonYear": 2026,
+      "date": "2027-03-24",
+      "kickoffTime": "19:00",
+      "competition": "ルヴァンカップ",
+      "round": "準決勝 第1戦",
+      "homeAway": "away",
+      "opponent": "柏レイソル",
+      "venue": "三協フロンテア柏スタジアム",
+      "status": "scheduled",
+      "sourceUrl": "https://www.jleague.jp/match/leaguecup/2027/032402",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-11-16T03:36:23+09:00",
+      "note": "",
+      "jleagueId": "2027032402"
+    },
+    {
+      "id": "2027-03-28-levain-2027032802",
+      "seasonYear": 2026,
+      "date": "2027-03-28",
+      "kickoffTime": "15:00",
+      "competition": "ルヴァンカップ",
+      "round": "準決勝 第2戦",
+      "homeAway": "home",
+      "opponent": "柏レイソル",
+      "venue": "メルカリスタジアム",
+      "status": "scheduled",
+      "sourceUrl": "https://www.jleague.jp/match/leaguecup/2027/032802",
+      "sourceName": "Jリーグ公式サイト",
+      "lastFetchedAt": "2026-11-16T03:36:23+09:00",
+      "note": "",
+      "jleagueId": "2027032802"
     },
     {
       "id": "2027-04-03-j1-yokohamafm",
